@@ -1,0 +1,49 @@
+main{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+ul{
+    list-style-type: none;
+    font-weight: 600;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+li{
+    padding: 0.5rem;
+}
+
+button{
+    border-radius: 5px;
+    /* border: 2px; */
+}
+
+.notes-card{
+    min-height: 30vh;
+}
+
+.menu-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.options{
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+}
+
+/* .rep-input{
+    max-width: 2rem;
+} */
+
+.met-input, .rep-input{
+    max-width: 3rem;
+    border-radius: 5px;
+}
+

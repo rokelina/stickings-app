@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Stickings App</title>
+  </head>
+  <body>
+    <main>
+      <div class="options">
+        <div class="metronome">
+          Metronome
+          <input
+            type="number"
+            class="met-input"
+            name="met-input"
+            id="met-input"
+            value="90"
+          />
+          BPM
+        </div>
+        <div class="repeat">
+          Repeats
+          <input
+            type="number"
+            class="rep-input"
+            name="rep-input"
+            id="rep-input"
+            value="4"
+          />
+        </div>
+      </div>
+      <div id="notes-card" class="notes-card">
+        <div id="controls" class="controls">
+          <button id="play">Play</button>
+          <button id="pause">Pause</button>
+          <button id="stop">Stop</button>
+        </div>
+        <div id="notes-containter">
+          <h3 id="stickings"></h3>
+        </div>
+      </div>
+      <div id="menu-card" class="menu-card">
+        <div id="menu-options">
+          <input type="checkbox" id="rendom-mode" />
+          <label for="random-mode">Random Mode</label>
+          <input type="checkbox" id="rows-mode" />
+          <label for="rows-mode">Rows Mode</label>
+        </div>
+        <div id="menu-container" class="menu-container">
+          <ul>
+            1st
+          </ul>
+          <ul>
+            2nd
+          </ul>
+          <ul>
+            3rd
+          </ul>
+          <ul>
+            4th
+          </ul>
+          <ul id="last-column">
+            Select Row
+          </ul>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="eight-notes-menu.js"></script>
+</html>
