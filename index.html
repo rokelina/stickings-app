@@ -11,7 +11,6 @@
     <main>
       <div class="options">
         <div class="metronome">
-          Metronome
           <input
             type="number"
             class="met-input"
@@ -34,37 +33,34 @@
       </div>
       <div id="notes-card" class="notes-card">
         <div id="controls" class="controls">
-          <button id="play">Play</button>
-          <button id="pause">Pause</button>
-          <button id="stop">Stop</button>
+          <button id="play">▶ Play</button>
+          <button id="pause">⏸ Pause</button>
+          <button id="stop">⏹ Stop</button>
         </div>
         <div id="notes-containter">
-          <h3 id="stickings"></h3>
+          <div id="stickings-container"></div>
         </div>
       </div>
-      <div id="menu-card" class="menu-card">
-        <div id="menu-options">
-          <input type="checkbox" id="rendom-mode" />
-          <label for="random-mode">Random Mode</label>
-          <input type="checkbox" id="rows-mode" />
-          <label for="rows-mode">Rows Mode</label>
-        </div>
-        <div id="menu-container" class="menu-container">
-          <ul>
-            1st
-          </ul>
-          <ul>
-            2nd
-          </ul>
-          <ul>
-            3rd
-          </ul>
-          <ul>
-            4th
-          </ul>
-          <ul id="last-column">
-            Select Row
-          </ul>
+      <div id="menu" class="menu">
+        <div id="menu-card" class="menu-card">
+          <div id="menu-options" class="menu-options">
+            <div>
+              <input type="checkbox" id="random-mode" class="random-mode" />
+              <label for="random-mode">RANDOM</label>
+            </div>
+            <div>
+              <input type="checkbox" id="rows-mode" class="rows-mode" />
+              <label for="rows-mode">ROWS</label>
+            </div>
+            <button id="reset-button" class="reset">Reset</button>
+          </div>
+          <div id="menu-container" class="menu-container">
+            <fieldset id="column"><legend>1</legend></fieldset>
+            <fieldset id="column"><legend>2</legend></fieldset>
+            <fieldset id="column"><legend>3</legend></fieldset>
+            <fieldset id="column"><legend>4</legend></fieldset>
+            <fieldset id="column" class="last"><legend>Row</legend></fieldset>
+          </div>
         </div>
       </div>
     </main>

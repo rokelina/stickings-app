@@ -1,49 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body{
+    display: grid;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 100vh;
+    font-size: 16px;
+}
 main{
-    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
 }
 
-ul{
-    list-style-type: none;
+fieldset{
+    border: 1px solid #333;
+    border-radius: 10px;
+    display: grid;
+    justify-items: center;
+    min-height: fit-content;
+    padding: 0.3rem;
+}
+
+legend{
     font-weight: 600;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
     text-align: center;
 }
 
-li{
+button{
+    border-radius: 15px;
+    background-color: white;
     padding: 0.5rem;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 0.5rem;
 }
 
-button{
-    border-radius: 5px;
-    /* border: 2px; */
+button:hover{
+    background-color: #dcdcdc;
+    cursor: pointer;
 }
+
 
 .notes-card{
-    min-height: 30vh;
+    min-height: 55vh;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    
 }
 
 .menu-container{
     display: flex;
+    justify-content: space-around;
+    padding: 0.5rem ;
+}
+
+.menu-card{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #333;
+    border-radius: 15px;
+    padding: 0.5rem;
+    width: fit-content;
+}
+
+.sticking{
+    padding: 0.5rem 0.2rem;
+}
+.controls{
+    display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 1rem;
+}
+
+.menu-options{
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 4rem;
+    align-items: center;
+}
+.random-mode, .rows-mode{
+    margin: 0 0.6rem;
+}
+
+.reset{
+    margin-left: 2rem;
+    
 }
 
 .options{
     display: flex;
     justify-content: space-around;
-    padding: 2rem;
+    margin-top: 2rem;
 }
 
-/* .rep-input{
-    max-width: 2rem;
-} */
 
 .met-input, .rep-input{
     max-width: 3rem;
     border-radius: 5px;
+    padding: 0.3rem;
 }
 
+@media screen and (max-width: 576px){
+    body{
+        font-size: 14px;
+
+    }
+    .menu-options{
+        padding: 0 1rem;
+    }
+}

@@ -5,15 +5,16 @@ const eightNotesMenu = Object.freeze({
   ll: 'LL',
 });
 
-const columns = document.querySelectorAll('ul');
+const columns = document.querySelectorAll('#column');
 console.log(columns);
 
 function createMenu() {
-  columns.forEach((column) => {
+  columns.forEach((column, key) => {
     for (const prop in eightNotesMenu) {
-      const child = document.createElement('li');
-      if (!column.id) {
-        child.innerHTML = `<input type="checkbox" id="${prop}" /><label>${eightNotesMenu[prop]}</label>`;
+      const child = document.createElement('div');
+      child.classList.add('sticking');
+      if (!column.classList.contains('last')) {
+        child.innerHTML = `<input type="checkbox" id="${prop}" key="${key}" name="sticking"/><label for="${prop}" key="${key}">${eightNotesMenu[prop]}</label>`;
         column.appendChild(child);
       } else {
         child.innerHTML = `<input type="checkbox" id="${prop}" />`;
