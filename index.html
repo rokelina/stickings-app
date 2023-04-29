@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="eight-notes-menu.js" defer></script>
     <title>Stickings App</title>
   </head>
   <body>
@@ -37,33 +38,58 @@
           <button id="pause">⏸ Pause</button>
           <button id="stop">⏹ Stop</button>
         </div>
-        <div id="notes-containter">
-          <div id="stickings-container"></div>
+        <div id="notes-container" class="notes-container">
+          <div id="notes-graph" class="notes-graph">
+            <h1>notes graph</h1>
+            <br />
+            <br />
+          </div>
+          <div id="stickings-container" class="stickings-container">
+            <button class="note">R</button>
+            <button class="note">L</button>
+            <button class="note">R</button>
+            <button class="note">L</button>
+            <button class="note">R</button>
+            <button class="note">L</button>
+            <button class="note">R</button>
+            <button class="note">L</button>
+          </div>
         </div>
       </div>
       <div id="menu" class="menu">
         <div id="menu-card" class="menu-card">
+          <div id="menu-container" class="menu-container">
+            <form>
+              <fieldset id="beat-1" class="column"><legend>1</legend></fieldset>
+            </form>
+            <form>
+              <fieldset id="beat-2" class="column"><legend>2</legend></fieldset>
+            </form>
+            <form>
+              <fieldset id="beat-3" class="column"><legend>3</legend></fieldset>
+            </form>
+            <form>
+              <fieldset id="beat-4" class="column"><legend>4</legend></fieldset>
+            </form>
+            <form>
+              <fieldset id="rows" class="column last">
+                <legend>Row</legend>
+              </fieldset>
+            </form>
+          </div>
           <div id="menu-options" class="menu-options">
             <div>
               <input type="checkbox" id="random-mode" class="random-mode" />
-              <label for="random-mode">RANDOM</label>
+              <label for="random-mode">Random</label>
             </div>
             <div>
               <input type="checkbox" id="rows-mode" class="rows-mode" />
-              <label for="rows-mode">ROWS</label>
+              <label for="rows-mode">Rows</label>
             </div>
             <button id="reset-button" class="reset">Reset</button>
-          </div>
-          <div id="menu-container" class="menu-container">
-            <fieldset id="column"><legend>1</legend></fieldset>
-            <fieldset id="column"><legend>2</legend></fieldset>
-            <fieldset id="column"><legend>3</legend></fieldset>
-            <fieldset id="column"><legend>4</legend></fieldset>
-            <fieldset id="column" class="last"><legend>Row</legend></fieldset>
           </div>
         </div>
       </div>
     </main>
   </body>
-  <script src="eight-notes-menu.js"></script>
 </html>
