@@ -14,7 +14,7 @@ function onCreateMenu() {
       const child = document.createElement('div');
       if (!column.classList.contains('last')) {
         child.innerHTML = `<input type="radio" id="${prop}${key}" key=${key} name="field${key}" value="${prop}${key}"/>
-        <label for="${prop}${key}" key="${key}">${prop.toUpperCase()}</label>`;
+        <label for="${prop}${key}" key="${key}">${eightNotesMenu[prop]}</label>`;
         child.classList.add('sticking');
         column.appendChild(child);
       } else {
@@ -27,14 +27,21 @@ function onCreateMenu() {
 }
 
 function selectRow(e) {
+  const lastColumn = document.querySelector('.last');
+  const lastCheckboxes = lastColumn.querySelectorAll('input[type="checkbox"]');
   let isChecked = e.target.checked;
-  const name = e.target.name;
-  const rowCheckboxes = document.getElementsByName(name);
-  for (const checkbox of rowCheckboxes) {
-    checkbox.checked = isChecked;
+  const rowName = e.target.name;
+  const rowInputs = document.querySelectorAll(`[id^="${rowName}"]`);
+  for (const input of rowInputs) {
+    input.checked = isChecked;
+  }
+
+  for (const checkbox of lastCheckboxes) {
+    if (checkbox.name !== rowName && isChecked) {
+      checkbox.checked = false;
+    }
   }
 }
-
 function onSelectRow() {
   const lastColumn = document.querySelector('.last');
   const lastCheckboxes = lastColumn.querySelectorAll('input[type="checkbox"]');
