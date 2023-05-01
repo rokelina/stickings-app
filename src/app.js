@@ -1,3 +1,5 @@
+import './css/style.css';
+
 const eightNotesMenu = Object.freeze({
   rl: 'RL',
   lr: 'LR',
@@ -42,6 +44,7 @@ function selectRow(e) {
     }
   }
 }
+
 function onSelectRow() {
   const lastColumn = document.querySelector('.last');
   const lastCheckboxes = lastColumn.querySelectorAll('input[type="checkbox"]');
