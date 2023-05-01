@@ -67,7 +67,7 @@ button:hover{
 .menu{
     display: flex;
     justify-content: center;
-    
+    margin-bottom: 1rem;
 }
 
 .menu-container{
@@ -112,7 +112,7 @@ button:hover{
 .options{
     display: flex;
     justify-content: space-around;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .met-input, .rep-input{
