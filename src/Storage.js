@@ -15,3 +15,5 @@ class Storage {
     return beats;
   }
 }
+
+export default Storage;

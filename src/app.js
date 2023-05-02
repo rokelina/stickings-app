@@ -1,6 +1,7 @@
 import './css/style.css';
 import { eightNotesPermutations, tripletPermutations } from './permutations';
 import { ThreeHitBeat, TwoHitBeat } from './Beat';
+import Storage from './Storage';
 
 // callback to create the stickings menu based on permutation param
 function onCreateMenu(permutationsMenu) {
@@ -9,10 +10,12 @@ function onCreateMenu(permutationsMenu) {
     for (const prop in permutationsMenu) {
       const child = document.createElement('div');
       if (!column.classList.contains('last')) {
-        child.innerHTML = `<input type="radio" id="${prop}${key}" key=${key} name="field${key}" value="${prop}${key}" data-hands="${
+        child.innerHTML = `<input type="radio" id="${prop}${key}" key=${key} 
+        name="beat-${key + 1}" value="${prop}${key}" data-hands="${
           permutationsMenu[prop]
         }"/>
         <label for="${prop}${key}" key="${key}">${prop.toUpperCase()}</label>`;
+
         child.classList.add('sticking');
         column.appendChild(child);
       } else {
@@ -30,7 +33,9 @@ function selectRow(e) {
   const lastCheckboxes = lastColumn.querySelectorAll('input[type="checkbox"]');
   let isChecked = e.target.checked;
   const rowName = e.target.name;
-  const radioInputs = document.querySelectorAll(`[id^="${rowName}"]`);
+  const radioInputs = document.querySelectorAll(
+    `input[type="radio"][id^="${rowName}"]`
+  );
 
   for (const checkbox of lastCheckboxes) {
     if (checkbox.name !== rowName && isChecked) {
@@ -40,25 +45,21 @@ function selectRow(e) {
 
   for (const input of radioInputs) {
     input.checked = isChecked;
-    // let selection;
-    // if (input.getAttribute('value').length < 4) {
-    //   const array = [input.dataset.hands[0], input.dataset.hands[2]];
-    //   const key = +input.getAttribute('key');
-    //   const id = input.getAttribute('id');
-
-    //   selection = new TwoHitBeat(array, key, id);
-    // } else {
-    //   const array = [
-    //     input.dataset.hands[0],
-    //     input.dataset.hands[2],
-    //     input.dataset.hands[4],
-    //   ];
-    //   const key = +input.getAttribute('key');
-    //   const id = input.getAttribute('id');
-
-    //   selection = new ThreeHitBeat(array, key, id);
-    // }
-    // // console.log(selection);
+    const data = input.dataset.hands;
+    const toArray = data.split(',');
+    const key = +input.getAttribute('key');
+    const id = input.id;
+    if (id.length === 3) {
+      const selection = new TwoHitBeat(toArray, key, id);
+      Storage.addBeat(selection.describe);
+      console.log(selection);
+    } else if (id.length === 4) {
+      const selection = new ThreeHitBeat(toArray, key, id);
+      Storage.addBeat(selection.describe);
+      console.log(selection);
+    } else {
+      throw Error('Something went wrong');
+    }
   }
 }
 
@@ -73,23 +74,18 @@ function onSelectRow() {
 
 function selectStickings(e) {
   let selection = e.target;
-  if (selection.value.length === 3) {
-    selection = new TwoHitBeat(
-      [selection.dataset.hands[0], selection.dataset.hands[2]],
-      +selection.getAttribute('key'),
-      selection.id
-    );
+  const dataHands = selection.dataset.hands;
+  const toArray = dataHands.split(',');
+  const key = +selection.getAttribute('key');
+  const id = selection.id;
+
+  if (id.length === 3) {
+    selection = new TwoHitBeat(toArray, key, id);
+    Storage.addBeat(selection.describe);
     console.log(selection);
-  } else if (selection.value.length === 4) {
-    selection = new ThreeHitBeat(
-      [
-        selection.dataset.hands[0],
-        selection.dataset.hands[2],
-        selection.dataset.hands[4],
-      ],
-      +selection.getAttribute('key'),
-      selection.id
-    );
+  } else if (id.length === 4) {
+    selection = new ThreeHitBeat(toArray, key, id);
+    Storage.addBeat(selection.describe);
     console.log(selection);
   } else {
     throw Error('Something went wrong');
@@ -97,10 +93,6 @@ function selectStickings(e) {
 }
 
 function onSelectStickings() {
-  // const radioButtons = document.querySelectorAll('input[type="radio"]');
-  // for (const radioButton of radioButtons) {
-  //   radioButton.addEventListener('change', selectStickings);
-  // }
   const stickings = document.querySelectorAll('.sticking');
   for (const sticking of stickings) {
     sticking.addEventListener('change', selectStickings);
@@ -108,7 +100,7 @@ function onSelectStickings() {
 }
 
 function onLoad() {
-  onCreateMenu(tripletPermutations);
+  onCreateMenu(eightNotesPermutations);
   onSelectRow();
   onSelectStickings();
 }
