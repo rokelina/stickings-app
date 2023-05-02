@@ -2,7 +2,7 @@ class TwoHitBeat {
   constructor(permutationArray, key, id) {
     this.first = permutationArray[0];
     this.second = permutationArray[1];
-    this.position = key + 1;
+    this.beat = key + 1;
     this.id = id;
     this.noteValue = 'eight notes';
   }
@@ -10,7 +10,7 @@ class TwoHitBeat {
   get describe() {
     return {
       id: this.id,
-      beat: this.position,
+      beat: this.beat,
       noteValue: this.noteValue,
       firstHit: { hand: this.first, isAccented: false },
       secondHit: { hand: this.second, isAccented: false },
@@ -23,7 +23,7 @@ class ThreeHitBeat {
     this.first = permutationArray[0];
     this.second = permutationArray[1];
     this.third = permutationArray[2];
-    this.position = key + 1;
+    this.beat = key + 1;
     this.id = id;
     this.noteValue = 'triplet';
   }
@@ -31,7 +31,7 @@ class ThreeHitBeat {
   get describe() {
     return {
       id: this.id,
-      beat: this.position,
+      beat: this.beat,
       noteValue: this.noteValue,
       firstHit: { hand: this.first, isAccented: false },
       secondHit: { hand: this.second, isAccented: false },

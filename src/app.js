@@ -1,7 +1,7 @@
 import './css/style.css';
 import { eightNotesPermutations, tripletPermutations } from './permutations';
 import { ThreeHitBeat, TwoHitBeat } from './Beat';
-import Storage from './Storage';
+// import Storage from './Storage';
 
 // callback to create the stickings menu based on permutation param
 function onCreateMenu(permutationsMenu) {
@@ -49,17 +49,23 @@ function selectRow(e) {
     const toArray = data.split(',');
     const key = +input.getAttribute('key');
     const id = input.id;
+    const name = input.name;
     if (id.length === 3) {
       const selection = new TwoHitBeat(toArray, key, id);
-      Storage.addBeat(selection.describe);
+      localStorage.setItem(name, JSON.stringify(selection.describe));
+
       console.log(selection);
     } else if (id.length === 4) {
       const selection = new ThreeHitBeat(toArray, key, id);
-      Storage.addBeat(selection.describe);
+      localStorage.setItem(name, JSON.stringify(selection.describe));
+
       console.log(selection);
     } else {
       throw Error('Something went wrong');
     }
+  }
+  if (!isChecked) {
+    clearStorage();
   }
 }
 
@@ -78,14 +84,17 @@ function selectStickings(e) {
   const toArray = dataHands.split(',');
   const key = +selection.getAttribute('key');
   const id = selection.id;
+  const name = selection.name;
 
   if (id.length === 3) {
     selection = new TwoHitBeat(toArray, key, id);
-    Storage.addBeat(selection.describe);
+    localStorage.setItem(name, JSON.stringify(selection.describe));
+
     console.log(selection);
   } else if (id.length === 4) {
     selection = new ThreeHitBeat(toArray, key, id);
-    Storage.addBeat(selection.describe);
+    localStorage.setItem(name, JSON.stringify(selection.describe));
+
     console.log(selection);
   } else {
     throw Error('Something went wrong');
@@ -99,10 +108,25 @@ function onSelectStickings() {
   }
 }
 
+function clearStorage() {
+  localStorage.clear();
+}
+
+function clearUI() {
+  const allInputs = document.querySelectorAll('input');
+  for (const input of allInputs) {
+    input.checked = false;
+  }
+}
+
 function onLoad() {
   onCreateMenu(eightNotesPermutations);
   onSelectRow();
   onSelectStickings();
+  clearStorage();
+  clearUI();
 }
 
 document.addEventListener('DOMContentLoaded', onLoad);
+document.getElementById('reset-button').addEventListener('click', clearStorage);
+document.getElementById('reset-button').addEventListener('click', clearUI);
