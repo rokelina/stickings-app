@@ -3,7 +3,7 @@ import { eightNotesPermutations, tripletPermutations } from './permutations';
 import { ThreeHitBeat, TwoHitBeat } from './Beat';
 // import Storage from './Storage';
 
-// callback to create the stickings menu based on permutation param
+// callback to create the stickings menu based on a permutations param
 function onCreateMenu(permutationsMenu) {
   const columns = document.querySelectorAll('.column');
   columns.forEach((column, key) => {
@@ -53,13 +53,9 @@ function selectRow(e) {
     if (id.length === 3) {
       const selection = new TwoHitBeat(toArray, key, id);
       localStorage.setItem(name, JSON.stringify(selection.describe));
-
-      console.log(selection);
     } else if (id.length === 4) {
       const selection = new ThreeHitBeat(toArray, key, id);
       localStorage.setItem(name, JSON.stringify(selection.describe));
-
-      console.log(selection);
     } else {
       throw Error('Something went wrong');
     }
@@ -89,13 +85,9 @@ function selectStickings(e) {
   if (id.length === 3) {
     selection = new TwoHitBeat(toArray, key, id);
     localStorage.setItem(name, JSON.stringify(selection.describe));
-
-    console.log(selection);
   } else if (id.length === 4) {
     selection = new ThreeHitBeat(toArray, key, id);
     localStorage.setItem(name, JSON.stringify(selection.describe));
-
-    console.log(selection);
   } else {
     throw Error('Something went wrong');
   }
