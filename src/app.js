@@ -1,18 +1,19 @@
 import './css/style.css';
 import { eightNotesPermutations, tripletPermutations } from './permutations';
 import { ThreeHitBeat, TwoHitBeat } from './Beat';
+import createStickingButtons from './utils';
 // import Storage from './Storage';
 
 // callback to create the stickings menu based on a permutations param
-function onCreateMenu(permutationsMenu) {
+function onCreateMenu(permutationObject) {
   const columns = document.querySelectorAll('.column');
   columns.forEach((column, key) => {
-    for (const prop in permutationsMenu) {
+    for (const prop in permutationObject) {
       const child = document.createElement('div');
       if (!column.classList.contains('last')) {
         child.innerHTML = `<input type="radio" id="${prop}${key}" key=${key} 
         name="beat-${key + 1}" value="${prop}${key}" data-hands="${
-          permutationsMenu[prop]
+          permutationObject[prop]
         }"/>
         <label for="${prop}${key}" key="${key}">${prop.toUpperCase()}</label>`;
 
@@ -25,6 +26,8 @@ function onCreateMenu(permutationsMenu) {
       }
     }
   });
+  // create notes buttons
+  createStickingButtons(permutationObject);
 }
 
 // callback to select the row when the checkbox is checked
