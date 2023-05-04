@@ -12,8 +12,8 @@ class TwoHitBeat {
       id: this.id,
       beat: this.beat,
       noteValue: this.noteValue,
-      firstHit: { hand: this.first, isAccented: false },
-      secondHit: { hand: this.second, isAccented: false },
+      firstNote: { hand: this.first, isAccented: false },
+      secondNote: { hand: this.second, isAccented: false },
     };
   }
 }
@@ -33,9 +33,9 @@ class ThreeHitBeat {
       id: this.id,
       beat: this.beat,
       noteValue: this.noteValue,
-      firstHit: { hand: this.first, isAccented: false },
-      secondHit: { hand: this.second, isAccented: false },
-      thirdHit: { hand: this.third, isAccented: false },
+      firstNote: { hand: this.first, isAccented: false },
+      secondNote: { hand: this.second, isAccented: false },
+      thirdNote: { hand: this.third, isAccented: false },
     };
   }
 }
