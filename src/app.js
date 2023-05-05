@@ -64,9 +64,11 @@ function selectRow(e) {
     if (id.length === 3) {
       const selection = new TwoHitBeat(toArray, key, id);
       localStorage.setItem(name, JSON.stringify(selection.describe));
+      selection.storeNotes();
     } else if (id.length === 4) {
       const selection = new ThreeHitBeat(toArray, key, id);
       localStorage.setItem(name, JSON.stringify(selection.describe));
+      selection.storeNotes();
     } else {
       throw Error('Something went wrong');
     }
@@ -96,9 +98,11 @@ function selectStickings(e) {
   if (id.length === 3) {
     selection = new TwoHitBeat(toArray, key, id);
     localStorage.setItem(name, JSON.stringify(selection.describe));
+    selection.storeNotes();
   } else if (id.length === 4) {
     selection = new ThreeHitBeat(toArray, key, id);
     localStorage.setItem(name, JSON.stringify(selection.describe));
+    selection.storeNotes();
   } else {
     throw Error('Something went wrong');
   }
@@ -137,11 +141,11 @@ function onLoad() {
 document.addEventListener('DOMContentLoaded', onLoad);
 document.getElementById('reset-button').addEventListener('click', clearStorage);
 document.getElementById('reset-button').addEventListener('click', clearUI);
-document.getElementById('beat-1').addEventListener('change', populateFirstBeat);
-document
-  .getElementById('beat-2')
-  .addEventListener('change', populateSecondBeat);
-document.getElementById('beat-3').addEventListener('change', populateThirdBeat);
-document
-  .getElementById('beat-4')
-  .addEventListener('change', populateFourthBeat);
+// document.getElementById('beat-1').addEventListener('change', populateFirstBeat);
+// document
+//   .getElementById('beat-2')
+//   .addEventListener('change', populateSecondBeat);
+// document.getElementById('beat-3').addEventListener('change', populateThirdBeat);
+// document
+//   .getElementById('beat-4')
+//   .addEventListener('change', populateFourthBeat);
