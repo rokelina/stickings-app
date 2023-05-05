@@ -127,7 +127,7 @@ function clearUI() {
 }
 
 function onLoad() {
-  onCreateMenu(eightNotesPermutations);
+  onCreateMenu(tripletPermutations);
   onSelectRow();
   onSelectStickings();
   clearStorage();

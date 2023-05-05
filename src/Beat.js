@@ -1,3 +1,4 @@
+import Note from './Note';
 class TwoHitBeat {
   constructor(permutationArray, key, id) {
     this.first = permutationArray[0];
