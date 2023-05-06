@@ -2,15 +2,9 @@ import './css/style.css';
 import { eightNotesPermutations, tripletPermutations } from './permutations';
 import { ThreeHitBeat, TwoHitBeat } from './Beat';
 import createNoteButtons from './utils';
-import {
-  populateFirstBeat,
-  populateSecondBeat,
-  populateThirdBeat,
-  populateFourthBeat,
-} from './populateBeats';
+import populateNotes from './populateBeats';
 
 // import Storage from './Storage';
-// import Note from './Note';
 
 // callback to create the stickings menu based on a permutations param
 function onCreateMenu(permutationObject) {
@@ -75,7 +69,9 @@ function selectRow(e) {
   }
   if (!isChecked) {
     clearStorage();
+    clearUI();
   }
+  populateNotes();
 }
 
 //adds the event listener to each checkbox in the last column
@@ -106,6 +102,7 @@ function selectStickings(e) {
   } else {
     throw Error('Something went wrong');
   }
+  populateNotes();
 }
 
 function onSelectStickings() {
@@ -131,7 +128,7 @@ function clearUI() {
 }
 
 function onLoad() {
-  onCreateMenu(eightNotesPermutations);
+  onCreateMenu(tripletPermutations);
   onSelectRow();
   onSelectStickings();
   clearStorage();
@@ -141,11 +138,3 @@ function onLoad() {
 document.addEventListener('DOMContentLoaded', onLoad);
 document.getElementById('reset-button').addEventListener('click', clearStorage);
 document.getElementById('reset-button').addEventListener('click', clearUI);
-// document.getElementById('beat-1').addEventListener('change', populateFirstBeat);
-// document
-//   .getElementById('beat-2')
-//   .addEventListener('change', populateSecondBeat);
-// document.getElementById('beat-3').addEventListener('change', populateThirdBeat);
-// document
-//   .getElementById('beat-4')
-//   .addEventListener('change', populateFourthBeat);
