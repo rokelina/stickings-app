@@ -1,8 +1,6 @@
 import './css/style.css';
 import { eightNotesPermutations, tripletPermutations } from './permutations';
-import { ThreeHitBeat, TwoHitBeat } from './Beat';
-import createNoteButtons from './utils';
-import populateNotes from './populateBeats';
+import { createNoteButtons, saveSelection, populateNotes } from './utils';
 
 // import Storage from './Storage';
 
@@ -55,18 +53,10 @@ function selectRow(e) {
     const key = +input.getAttribute('key');
     const id = input.id;
     const name = input.name;
-    if (id.length === 3) {
-      const selection = new TwoHitBeat(toArray, key, id);
-      localStorage.setItem(name, JSON.stringify(selection.describe));
-      selection.storeNotes();
-    } else if (id.length === 4) {
-      const selection = new ThreeHitBeat(toArray, key, id);
-      localStorage.setItem(name, JSON.stringify(selection.describe));
-      selection.storeNotes();
-    } else {
-      throw Error('Something went wrong');
-    }
+
+    saveSelection(input, toArray, key, id, name);
   }
+
   if (!isChecked) {
     clearStorage();
     clearUI();
@@ -91,17 +81,7 @@ function selectStickings(e) {
   const id = selection.id;
   const name = selection.name;
 
-  if (id.length === 3) {
-    selection = new TwoHitBeat(toArray, key, id);
-    localStorage.setItem(name, JSON.stringify(selection.describe));
-    selection.storeNotes();
-  } else if (id.length === 4) {
-    selection = new ThreeHitBeat(toArray, key, id);
-    localStorage.setItem(name, JSON.stringify(selection.describe));
-    selection.storeNotes();
-  } else {
-    throw Error('Something went wrong');
-  }
+  saveSelection(selection, toArray, key, id, name);
   populateNotes();
 }
 
