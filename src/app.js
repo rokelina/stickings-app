@@ -2,8 +2,6 @@ import './css/style.css';
 import { eightNotesPermutations, tripletPermutations } from './permutations';
 import { createNoteButtons, saveSelection, populateNotes } from './utils';
 
-// import Storage from './Storage';
-
 // callback to create the stickings menu based on a permutations param
 function onCreateMenu(permutationObject) {
   const columns = document.querySelectorAll('.column');
@@ -33,14 +31,14 @@ function onCreateMenu(permutationObject) {
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
   const lastColumn = document.querySelector('.last');
-  const lastCheckboxes = lastColumn.querySelectorAll('input[type="checkbox"]');
+  const rowCheckboxes = lastColumn.querySelectorAll('input[type="checkbox"]');
   let isChecked = e.target.checked;
   const rowName = e.target.name;
   const radioInputs = document.querySelectorAll(
     `input[type="radio"][id^="${rowName}"]`
   );
 
-  for (const checkbox of lastCheckboxes) {
+  for (const checkbox of rowCheckboxes) {
     if (checkbox.name !== rowName && isChecked) {
       checkbox.checked = false;
     }
