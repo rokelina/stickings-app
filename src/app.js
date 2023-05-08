@@ -1,6 +1,11 @@
 import './css/style.css';
 import { eightNotesPermutations, tripletPermutations } from './permutations';
-import { createNoteButtons, saveSelection, populateNotes } from './utils';
+import {
+  createNoteButtons,
+  saveSelection,
+  populateNotes,
+  checkRow,
+} from './utils';
 
 // callback to create the stickings menu based on a permutations param
 function onCreateMenu(permutationObject) {
@@ -81,6 +86,7 @@ function selectStickings(e) {
 
   saveSelection(selection, toArray, key, id, name);
   populateNotes();
+  checkRow();
 }
 
 function onSelectStickings() {
