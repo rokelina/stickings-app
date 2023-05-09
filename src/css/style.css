@@ -17,7 +17,6 @@ main{
 
 fieldset{
     border: none;
-    /* border-radius: 10px; */
     display: grid;
     justify-items: center;
     min-height: fit-content;
@@ -36,11 +35,11 @@ button{
     padding: 0.5rem;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-left: 0.5rem;
-    border: 2px solid #333;
+    border: 1px solid #333;
 }
 
 button:hover{
-    background-color: #dcdcdc;
+    background-color: #e4e4e4;
     cursor: pointer;
 }
 
@@ -62,6 +61,7 @@ button:hover{
     width: 2rem;
     text-align: center;
     font-weight: 600;
+    border-color: #dcdcdc;
 }
 
 .menu{
@@ -79,8 +79,8 @@ button:hover{
 .menu-card{
     display: flex;
     flex-direction: column;
-    border: 2px solid #333;
-    border-radius: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 20px;
     padding: 0.5rem 1rem;
     min-width: 50vw;
 }
@@ -116,15 +116,23 @@ button:hover{
 
 .options{
     display: flex;
-    justify-content: space-around;
-    margin-top: 2rem;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: #dcdcdc solid 1px;
+    
+}
+.metronome, .repeat {
+    margin: 0 1rem;
+    border: #dcdcdc solid 1px;
+    border-radius: 10px;
+    padding: 0.5rem 1.5rem;
 }
 
 .met-input, .rep-input{
     max-width: 4rem;
     border-radius: 5px;
     padding: 0.3rem;
-    border: 2px solid #333;
+    border: 1px solid #333;
 }
 
 @media screen and (max-width: 576px){
@@ -149,9 +157,10 @@ button:hover{
     }
     
     .note{
-        font-size: 10px;
+        font-size: 12px;
         height: 1.6rem;
         width: 1.6rem;
+        margin-left: 0.2rem;
     }
 
     .reset{
@@ -160,6 +169,6 @@ button:hover{
         border-radius: 10px;
     }
     .options{
-        margin-top: 2rem;
+        padding: 0.5rem;   
     }
 }
