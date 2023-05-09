@@ -5,7 +5,7 @@ import {
   saveSelection,
   populateNotes,
   checkRow,
-} from './utils';
+} from './noteUtils';
 
 // callback to create the stickings menu based on a permutations param
 function onCreateMenu(permutationObject) {
@@ -119,6 +119,12 @@ function onLoad() {
   clearUI();
 }
 
-document.addEventListener('DOMContentLoaded', onLoad);
-document.getElementById('reset-button').addEventListener('click', clearStorage);
-document.getElementById('reset-button').addEventListener('click', clearUI);
+function init() {
+  document.addEventListener('DOMContentLoaded', onLoad);
+  document
+    .getElementById('reset-button')
+    .addEventListener('click', clearStorage);
+  document.getElementById('reset-button').addEventListener('click', clearUI);
+}
+
+init();

@@ -1,18 +1,19 @@
-* {
-    margin: 0;
-    padding: 0;
+:root {
     box-sizing: border-box;
+    font-size: 16px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
 body{
     display: grid;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
     height: 100vh;
-    font-size: 16px;
 }
 main{
     display: flex;
     flex-direction: column;
+    margin-left: 5rem;
 }
 
 fieldset{
@@ -43,9 +44,17 @@ button:hover{
     cursor: pointer;
 }
 
-.notes-card{
-    min-height: 55vh;
+.navbar{
+    width: 5rem;
+    height: 100vh;
+    position: fixed;
+    background-color: #333;
 }
+
+.notes-card{
+    min-height: 45vh;
+}
+
 .notes-container{
     display: flex;
     justify-content: center;
@@ -79,7 +88,7 @@ button:hover{
 .menu-card{
     display: flex;
     flex-direction: column;
-    border: 1px solid #dcdcdc;
+    border: 1px solid #333;
     border-radius: 20px;
     padding: 0.5rem 1rem;
     min-width: 50vw;
@@ -118,7 +127,7 @@ button:hover{
     display: flex;
     justify-content: center;
     padding: 1rem;
-    border-bottom: #dcdcdc solid 1px;
+    border-bottom: #888888 solid 1px;
     
 }
 .metronome, .repeat {
@@ -170,5 +179,8 @@ button:hover{
     }
     .options{
         padding: 0.5rem;   
+    }
+    .metronome, .repeat {
+        padding: 0.5rem;
     }
 }
