@@ -35,18 +35,21 @@ legend{
 }
 
 button{
-    border-radius: 15px;
-    background-color: white;
-    padding: 0.5rem;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-left: 0.5rem;
-    border: 1px solid #333;
 }
 
 button:hover{
     background-color: #e4e4e4;
     cursor: pointer;
 }
+.controls-button, .note, .reset{
+    border-radius: 15px;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    border: 1px solid #333;
+    background-color: white;
+}
+
 
 .navbar{
     width: 5rem;
@@ -64,11 +67,50 @@ button:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 75%;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
   }
   
   .nav-item {
-    width: 75%;
+    width: 100%;
+    text-align: start;
+  }
+
+  .nav-link{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    text-decoration: none;
+    background-color: #333;
+    border: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-link:hover{
+    background-color: #555555;
+  }
+
+  .icon-text{
+    display: none;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .nav-link svg{
+    min-width: 3rem;
+    max-width: 5rem;
+    margin: 0 0.5rem
+  }
+
+  .navbar:hover{
+    width: 16rem;
+  }
+
+  .navbar:hover .icon-text{
+    display: block;
   }
 
 .notes-card{
@@ -112,7 +154,7 @@ button:hover{
     border: 1px solid #333;
     border-radius: 20px;
     padding: 0.5rem 1rem;
-    min-width: 50vw;
+    min-width: 40vw;
 }
 
 .stickings-container{
@@ -127,7 +169,7 @@ button:hover{
 .controls{
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 4rem;
 }
 
 .menu-options{
@@ -147,15 +189,21 @@ button:hover{
 .options{
     display: flex;
     justify-content: center;
-    padding: 1rem;
-    border-bottom: #888888 solid 1px;
+    background-color: #333;
     
 }
+
+.options-icon{
+    max-height: 3rem;
+    
+}
+
 .metronome, .repeat {
     margin: 0 1rem;
-    border: #dcdcdc solid 1px;
-    border-radius: 10px;
-    padding: 0.5rem 1.5rem;
+    padding: 0.3rem 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
 }
 
 .met-input, .rep-input{
@@ -163,6 +211,7 @@ button:hover{
     border-radius: 5px;
     padding: 0.3rem;
     border: 1px solid #333;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 @media screen and (max-width: 576px){
