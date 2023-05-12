@@ -13,6 +13,7 @@ class TwoHitBeat {
       id: this.id,
       beat: this.beat,
       noteValue: this.noteValue,
+      sticking: this.first.toLowerCase() + this.second.toLowerCase(),
       firstNote: this.first,
       secondNote: this.second,
     };
@@ -60,6 +61,10 @@ class ThreeHitBeat {
       id: this.id,
       beat: this.beat,
       noteValue: this.noteValue,
+      sticking:
+        this.first.toLowerCase() +
+        this.second.toLowerCase() +
+        this.third.toLowerCase(),
       firstNote: this.first,
       secondNote: this.second,
       thirdNote: this.third,

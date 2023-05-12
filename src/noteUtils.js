@@ -60,14 +60,13 @@ function checkRow() {
     const key = localStorage.key(i);
     if (beatsQuery.test(key)) {
       const value = JSON.parse(localStorage.getItem(key));
-      beatIdArray.push(value.id);
+      beatIdArray.push(value.sticking);
     }
   }
 
-  const newArray = beatIdArray.map((id) => id.substring(0, 3));
-  const toSet = new Set(newArray);
+  const toSet = new Set(beatIdArray);
   if (beatIdArray.length === 4 && toSet.size === 1) {
-    const checkbox = document.getElementById(newArray[0]);
+    const checkbox = document.getElementById(beatIdArray[0]);
     checkbox.checked = true;
   } else {
     const lastColumn = document.querySelector('.last');
