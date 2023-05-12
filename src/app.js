@@ -1,37 +1,7 @@
 import './css/style.css';
-import { eightNotesPermutations, tripletPermutations } from './permutations';
-import {
-  createNoteButtons,
-  saveSelection,
-  populateNotes,
-  checkRow,
-} from './noteUtils';
-
-// callback to create the stickings menu based on a permutations param
-function onCreateMenu(permutationObject) {
-  const columns = document.querySelectorAll('.column');
-  columns.forEach((column, key) => {
-    for (const prop in permutationObject) {
-      const child = document.createElement('div');
-      if (!column.classList.contains('last')) {
-        child.innerHTML = `<input type="radio" id="${prop}${key}" key=${key} 
-        name="beat-${key + 1}" value="${prop}${key}" data-hands="${
-          permutationObject[prop]
-        }"/>
-        <label for="${prop}${key}" key="${key}">${prop.toUpperCase()}</label>`;
-
-        child.classList.add('sticking');
-        column.appendChild(child);
-      } else {
-        child.innerHTML = `<input type="checkbox" id="${prop}" name="${prop}" value="${prop}"/>`;
-        child.classList.add('select-row');
-        column.appendChild(child);
-      }
-    }
-  });
-  // create notes buttons
-  createNoteButtons(permutationObject);
-}
+import { saveSelection, populateNotes, checkRow } from './noteUtils';
+import { eightNotesMenu, tripletsMenu } from './menuUtils';
+import { clearStorage, clearUI } from './helpers';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
@@ -64,6 +34,7 @@ function selectRow(e) {
     clearStorage();
     clearUI();
   }
+
   populateNotes();
 }
 
@@ -96,25 +67,8 @@ function onSelectStickings() {
   }
 }
 
-function clearStorage() {
-  localStorage.clear();
-}
-
-function clearUI() {
-  const allInputs = document.querySelectorAll('input');
-  const allStickings = document.querySelectorAll('.note');
-  for (const input of allInputs) {
-    input.checked = false;
-  }
-  for (const sticking of allStickings) {
-    sticking.textContent = '';
-  }
-}
-
 function onLoad() {
-  onCreateMenu(eightNotesPermutations);
-  onSelectRow();
-  onSelectStickings();
+  eightNotesMenu();
   clearStorage();
   clearUI();
 }
@@ -125,6 +79,16 @@ function init() {
     .getElementById('reset-button')
     .addEventListener('click', clearStorage);
   document.getElementById('reset-button').addEventListener('click', clearUI);
+  document
+    .getElementById('eight-notes')
+    .addEventListener('click', eightNotesMenu);
+  document.getElementById('triplets').addEventListener('click', tripletsMenu);
+  document
+    .getElementById('menu-container')
+    .addEventListener('click', onSelectStickings);
+  document
+    .getElementById('menu-container')
+    .addEventListener('click', onSelectRow);
 }
 
 init();

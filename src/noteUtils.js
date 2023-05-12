@@ -1,19 +1,6 @@
 // helper functions
 import { TwoHitBeat, ThreeHitBeat } from './Beat';
 
-// Create the note buttons dynamically according to the given permutation object
-function createNoteButtons(permutationObject) {
-  const stickingsContainer = document.getElementById('stickings-container');
-  const subdivision = Object.values(permutationObject)[0].length;
-  // total notes will be subdivision * 4
-  for (let i = 0; i < subdivision * 4; i++) {
-    const noteButton = document.createElement('button');
-    noteButton.setAttribute('id', `note-${i + 1}`);
-    noteButton.classList.add('note');
-    stickingsContainer.appendChild(noteButton);
-  }
-}
-
 // Saves selected stickings to storage, creates the Note instances and saves them in storage
 function saveSelection(selection, array, key, id, name) {
   if (id.length === 3) {
@@ -77,4 +64,4 @@ function checkRow() {
   }
 }
 
-export { createNoteButtons, saveSelection, populateNotes, checkRow };
+export { saveSelection, populateNotes, checkRow };
