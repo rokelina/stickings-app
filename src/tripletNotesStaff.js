@@ -1,13 +1,13 @@
 import { Vex } from 'vexflow';
 
-function renderEightNotesStaff() {
+function renderTripletNotesStaff() {
   const parentDiv = document.getElementById('notes-graph');
 
   while (parentDiv.firstChild) {
     parentDiv.removeChild(parentDiv.firstChild);
   }
 
-  const { Renderer, Stave, StaveNote, Beam, Formatter } = Vex.Flow;
+  const { Renderer, Stave, StaveNote, Beam, Tuplet, Formatter } = Vex.Flow;
   // Create an SVG renderer and attach it to the DIV element with id="output".
   const renderer = new Renderer(parentDiv, Renderer.Backends.SVG);
 
@@ -30,8 +30,16 @@ function renderEightNotesStaff() {
       keys: ['A/4'],
       duration: '8',
     }),
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
   ];
   const notes2 = [
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
     new StaveNote({
       keys: ['A/4'],
       duration: '8',
@@ -50,8 +58,16 @@ function renderEightNotesStaff() {
       keys: ['A/4'],
       duration: '8',
     }),
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
   ];
   const notes4 = [
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
     new StaveNote({
       keys: ['A/4'],
       duration: '8',
@@ -72,6 +88,13 @@ function renderEightNotesStaff() {
     new Beam(notes4),
   ];
 
+  const tuplets = [
+    new Tuplet(notes1),
+    new Tuplet(notes2),
+    new Tuplet(notes3),
+    new Tuplet(notes4),
+  ];
+
   Formatter.FormatAndDraw(context, stave, allNotes);
 
   // Draw the beams and stems.
@@ -79,8 +102,10 @@ function renderEightNotesStaff() {
     b.setContext(context).draw();
   });
 
+  tuplets.forEach((t) => t.setContext(context).draw());
+
   // Render the stave
   stave.setContext(context).draw();
 }
 
-export default renderEightNotesStaff;
+export default renderTripletNotesStaff;

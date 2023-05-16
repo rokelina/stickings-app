@@ -3,6 +3,7 @@ import { saveSelection, populateNotes, checkRow } from './noteUtils';
 import { eightNotesMenu, tripletsMenu } from './menuUtils';
 import { clearStorage, clearUI } from './helpers';
 import renderEightNotesStaff from './eightNotesStaff';
+import renderTripletNotesStaff from './tripletNotesStaff';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
@@ -84,7 +85,13 @@ function init() {
   document
     .getElementById('eight-notes')
     .addEventListener('click', eightNotesMenu);
+  document
+    .getElementById('eight-notes')
+    .addEventListener('click', renderEightNotesStaff);
   document.getElementById('triplets').addEventListener('click', tripletsMenu);
+  document
+    .getElementById('triplets')
+    .addEventListener('click', renderTripletNotesStaff);
   document
     .getElementById('menu-container')
     .addEventListener('click', onSelectStickings);
