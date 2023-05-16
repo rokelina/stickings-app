@@ -1,75 +1,86 @@
 import { Vex } from 'vexflow';
 
 function renderEightNotesStaff() {
-  const { Renderer, Stave, StaveNote, Beam, Voice } = Vex.Flow;
+  const parentDiv = document.getElementById('notes-graph');
 
-  // Create an SVG renderer and attach it to the DIV element with id="output".
-  const div = document.getElementById('notes-graph');
-  const renderer = new Renderer(div, Renderer.Backends.SVG);
+  if (!parentDiv.hasChildNodes()) {
+    const { Renderer, Stave, StaveNote, Beam, Formatter } = Vex.Flow;
+    // Create an SVG renderer and attach it to the DIV element with id="output".
+    const renderer = new Renderer(parentDiv, Renderer.Backends.SVG);
 
-  // Configure the rendering context.
-  renderer.resize(500, 125);
-  const context = renderer.getContext();
-  context.setFont('Arial', 10);
+    // Configure the rendering context.
+    renderer.resize(600, 125);
+    const context = renderer.getContext();
+    context.setFont('Arial', 10);
 
-  // Create a stave of width 400 at position 10, 40.
-  const stave = new Stave(10, 40, 500);
+    // Create a stave of width 400 at position 10, 40.
+    const stave = new Stave(10, 40, 600);
 
-  // Add a clef and time signature.
-  stave.addClef('percussion').addTimeSignature('4/4');
+    // Add a clef and time signature.
+    stave.addClef('percussion').addTimeSignature('4/4');
 
-  // Create notes for the voice.
-  const notes = [
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-  ];
+    // Create notes for the voice.
+    const notes1 = [
+      new StaveNote({
+        keys: ['A/4'],
+        duration: '8',
+      }),
+      new StaveNote({
+        keys: ['A/4'],
+        duration: '8',
+      }),
+    ];
+    const notes2 = [
+      new StaveNote({
+        keys: ['A/4'],
+        duration: '8',
+      }),
+      new StaveNote({
+        keys: ['A/4'],
+        duration: '8',
+      }),
+    ];
+    const notes3 = [
+      new StaveNote({
+        keys: ['A/4'],
+        duration: '8',
+      }),
+      new StaveNote({
+        keys: ['A/4'],
+        duration: '8',
+      }),
+    ];
+    const notes4 = [
+      new StaveNote({
+        keys: ['A/4'],
+        duration: '8',
+      }),
+      new StaveNote({
+        keys: ['A/4'],
+        duration: '8',
+      }),
+    ];
 
-  // Create a voice for the stave.
-  const voice = new Voice({ num_beats: 4, beat_value: 4 });
-  // Add the notes to the voice.
-  voice.addTickables(notes);
+    const allNotes = notes1.concat(notes2).concat(notes3).concat(notes4);
 
-  const beam = new Beam(notes);
+    // This hides the normal stems and flags.
+    const beams = [
+      new Beam(notes1),
+      new Beam(notes2),
+      new Beam(notes3),
+      new Beam(notes4),
+    ];
 
-  // Format the tick context to properly position the notes and beams.
-  const formatter = new Vex.Flow.Formatter()
-    .joinVoices([voice])
-    .format([voice], 400);
+    Formatter.FormatAndDraw(context, stave, allNotes);
 
-  // Render the stave and the notes.
-  stave.setContext(context).draw();
-  voice.draw(context, stave);
-  beam.setContext(context).draw();
+    // Draw the beams and stems.
+    beams.forEach((b) => {
+      b.setContext(context).draw();
+    });
+
+    // Render the stave
+    stave.setContext(context).draw();
+  }
 }
 
 export default renderEightNotesStaff;

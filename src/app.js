@@ -70,6 +70,7 @@ function onSelectStickings() {
 
 function onLoad() {
   eightNotesMenu();
+  renderEightNotesStaff();
   clearStorage();
   clearUI();
 }
@@ -91,7 +92,5 @@ function init() {
     .getElementById('menu-container')
     .addEventListener('click', onSelectRow);
 }
-
-renderEightNotesStaff();
 
 init();
