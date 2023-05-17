@@ -8,7 +8,7 @@ function renderEightNotesStaff() {
   }
 
   const { Renderer, Stave, StaveNote, Beam, Formatter } = Vex.Flow;
-  // Create an SVG renderer and attach it to the DIV element with id="output".
+  // Create an SVG renderer and attach it to the DIV element.
   const renderer = new Renderer(parentDiv, Renderer.Backends.SVG);
 
   // Configure the rendering context.
