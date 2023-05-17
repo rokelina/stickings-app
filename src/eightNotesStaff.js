@@ -21,55 +21,103 @@ function renderEightNotesStaff() {
   // Add a clef and time signature.
   stave.addClef('percussion').addTimeSignature('4/4');
 
+  let notes1 = [
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
+  ];
+  let notes2 = [
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
+  ];
+  let notes3 = [
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
+  ];
+  let notes4 = [
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
+    new StaveNote({
+      keys: ['A/4'],
+      duration: '8',
+    }),
+  ];
+
   const storage = getLocalStorage();
-  console.log(storage);
-
-  const annotation = new Annotation('R');
-
-  annotation
-    .setVerticalJustification(Annotation.VerticalJustify.BOTTOM)
-    .setFont('Arial', 14, 'bold');
-
-  const notes1 = [
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }).addModifier(annotation),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-  ];
-  const notes2 = [
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-  ];
-  const notes3 = [
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-  ];
-  const notes4 = [
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-    new StaveNote({
-      keys: ['A/4'],
-      duration: '8',
-    }),
-  ];
+  for (const value of storage) {
+    switch (value.beat) {
+      case 1:
+        notes1 = [
+          new StaveNote({
+            keys: ['A/4'],
+            duration: '8',
+          }).addModifier(annotate(value.firstNote)),
+          new StaveNote({
+            keys: ['A/4'],
+            duration: '8',
+          }).addModifier(annotate(value.secondNote)),
+        ];
+        break;
+      case 2:
+        notes2 = [
+          new StaveNote({
+            keys: ['A/4'],
+            duration: '8',
+          }).addModifier(annotate(value.firstNote)),
+          new StaveNote({
+            keys: ['A/4'],
+            duration: '8',
+          }).addModifier(annotate(value.secondNote)),
+        ];
+        break;
+      case 3:
+        notes3 = [
+          new StaveNote({
+            keys: ['A/4'],
+            duration: '8',
+          }).addModifier(annotate(value.firstNote)),
+          new StaveNote({
+            keys: ['A/4'],
+            duration: '8',
+          }).addModifier(annotate(value.secondNote)),
+        ];
+        break;
+      case 4:
+        notes4 = [
+          new StaveNote({
+            keys: ['A/4'],
+            duration: '8',
+          }).addModifier(annotate(value.firstNote)),
+          new StaveNote({
+            keys: ['A/4'],
+            duration: '8',
+          }).addModifier(annotate(value.secondNote)),
+        ];
+        break;
+      default:
+        console.log('Something is wrong');
+        break;
+    }
+  }
 
   const allNotes = notes1.concat(notes2).concat(notes3).concat(notes4);
 
@@ -90,6 +138,13 @@ function renderEightNotesStaff() {
 
   // Render the stave
   stave.setContext(context).draw();
+
+  //helper function
+  function annotate(hand) {
+    return new Annotation(hand)
+      .setVerticalJustification(Annotation.VerticalJustify.BOTTOM)
+      .setFont('Arial', 14, 'bold');
+  }
 }
 
 function getLocalStorage() {

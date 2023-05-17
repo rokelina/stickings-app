@@ -1,5 +1,5 @@
 import './css/style.css';
-import { saveSelection, populateNotes, checkRow } from './noteUtils';
+import { saveSelection, checkRow } from './noteUtils';
 import { eightNotesMenu, tripletsMenu } from './menuUtils';
 import { clearStorage, clearUI } from './helpers';
 import renderEightNotesStaff from './eightNotesStaff';
