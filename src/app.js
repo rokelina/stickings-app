@@ -1,7 +1,9 @@
 import './css/style.css';
-import { saveSelection, populateNotes, checkRow } from './noteUtils';
+import { saveSelection, checkRow } from './noteUtils';
 import { eightNotesMenu, tripletsMenu } from './menuUtils';
 import { clearStorage, clearUI } from './helpers';
+import renderEightNotesStaff from './eightNotesStaff';
+import renderTripletNotesStaff from './tripletNotesStaff';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
@@ -35,7 +37,13 @@ function selectRow(e) {
     clearUI();
   }
 
-  populateNotes();
+  if (rowName.length === 2) {
+    renderEightNotesStaff();
+  } else if (rowName.length === 3) {
+    renderTripletNotesStaff();
+  } else {
+    throw Error('Something went wrong');
+  }
 }
 
 //adds the event listener to each checkbox in the last column
@@ -56,8 +64,15 @@ function selectStickings(e) {
   const name = selection.name;
 
   saveSelection(selection, toArray, key, id, name);
-  populateNotes();
   checkRow();
+
+  if (id.length === 3) {
+    renderEightNotesStaff();
+  } else if (id.length === 4) {
+    renderTripletNotesStaff();
+  } else {
+    throw Error('Something went wrong');
+  }
 }
 
 function onSelectStickings() {
@@ -69,6 +84,7 @@ function onSelectStickings() {
 
 function onLoad() {
   eightNotesMenu();
+  renderEightNotesStaff();
   clearStorage();
   clearUI();
 }
@@ -82,7 +98,13 @@ function init() {
   document
     .getElementById('eight-notes')
     .addEventListener('click', eightNotesMenu);
+  document
+    .getElementById('eight-notes')
+    .addEventListener('click', renderEightNotesStaff);
   document.getElementById('triplets').addEventListener('click', tripletsMenu);
+  document
+    .getElementById('triplets')
+    .addEventListener('click', renderTripletNotesStaff);
   document
     .getElementById('menu-container')
     .addEventListener('click', onSelectStickings);
