@@ -1,17 +1,17 @@
 // functions that create / update / delete menu
 
 import { eightNotesPermutations, tripletPermutations } from './permutations';
-function createNoteButtons(permutationObject) {
-  const stickingsContainer = document.getElementById('stickings-container');
-  const subdivision = Object.values(permutationObject)[0].length;
-  // total notes will be subdivision * 4
-  for (let i = 0; i < subdivision * 4; i++) {
-    const noteButton = document.createElement('button');
-    noteButton.setAttribute('id', `note-${i + 1}`);
-    noteButton.classList.add('note');
-    stickingsContainer.appendChild(noteButton);
-  }
-}
+// function createNoteButtons(permutationObject) {
+//   const stickingsContainer = document.getElementById('stickings-container');
+//   const subdivision = Object.values(permutationObject)[0].length;
+//   // total notes will be subdivision * 4
+//   for (let i = 0; i < subdivision * 4; i++) {
+//     const noteButton = document.createElement('button');
+//     noteButton.setAttribute('id', `note-${i + 1}`);
+//     noteButton.classList.add('note');
+//     stickingsContainer.appendChild(noteButton);
+//   }
+// }
 
 function createMenu(permutationObject) {
   const columns = document.querySelectorAll('.column');
@@ -35,7 +35,7 @@ function createMenu(permutationObject) {
     }
   });
   // create notes buttons
-  createNoteButtons(permutationObject);
+  // createNoteButtons(permutationObject);
 }
 
 function removeMenu() {

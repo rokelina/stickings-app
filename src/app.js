@@ -37,7 +37,15 @@ function selectRow(e) {
     clearUI();
   }
 
-  populateNotes();
+  if (rowName.length === 2) {
+    renderEightNotesStaff();
+  } else if (rowName.length === 3) {
+    renderTripletNotesStaff();
+  } else {
+    throw Error('Something went wrong');
+  }
+
+  // populateNotes();
 }
 
 //adds the event listener to each checkbox in the last column
@@ -58,8 +66,16 @@ function selectStickings(e) {
   const name = selection.name;
 
   saveSelection(selection, toArray, key, id, name);
-  populateNotes();
+  // populateNotes();
   checkRow();
+
+  if (id.length === 3) {
+    renderEightNotesStaff();
+  } else if (id.length === 4) {
+    renderTripletNotesStaff();
+  } else {
+    throw Error('Something went wrong');
+  }
 }
 
 function onSelectStickings() {

@@ -17,28 +17,29 @@ function saveSelection(selection, array, key, id, name) {
 }
 
 // Read Note items from storage
-function populateNotes() {
-  const noteButtons = document.querySelectorAll('.note');
-  const regex = /^note-/;
-  const noteArray = [];
-  // Loop through all items in localStorage and retrieve items that match the regular expression
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (regex.test(key)) {
-      const value = JSON.parse(localStorage.getItem(key));
-      noteArray.push([key, value]);
-    }
-  }
+// function populateNotes() {
+//   const noteButtons = document.querySelectorAll('.note');
+//   const regex = /^note-/;
+//   const noteArray = [];
+//   // Loop through all items in localStorage and retrieve items that match the regular expression
+//   for (let i = 0; i < localStorage.length; i++) {
+//     const key = localStorage.key(i);
+//     if (regex.test(key)) {
+//       const value = JSON.parse(localStorage.getItem(key));
+//       noteArray.push([key, value]);
+//     }
+//   }
 
-  noteArray.forEach((note) => {
-    for (const button of noteButtons) {
-      if (note[0] === button.id) {
-        button.textContent = note[1].hand;
-      }
-    }
-  });
-}
+//   noteArray.forEach((note) => {
+//     for (const button of noteButtons) {
+//       if (note[0] === button.id) {
+//         button.textContent = note[1].hand;
+//       }
+//     }
+//   });
+// }
 
+//checks is all inputs in the same row are checked and updates the UI to show that row's checkbox as checked
 function checkRow() {
   const beatsQuery = /^beat/;
   const beatIdArray = [];
@@ -64,4 +65,4 @@ function checkRow() {
   }
 }
 
-export { saveSelection, populateNotes, checkRow };
+export { saveSelection, checkRow };

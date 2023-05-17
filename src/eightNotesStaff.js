@@ -7,12 +7,12 @@ function renderEightNotesStaff() {
     parentDiv.removeChild(parentDiv.firstChild);
   }
 
-  const { Renderer, Stave, StaveNote, Beam, Formatter } = Vex.Flow;
+  const { Renderer, Stave, StaveNote, Beam, Formatter, Annotation } = Vex.Flow;
   // Create an SVG renderer and attach it to the DIV element.
   const renderer = new Renderer(parentDiv, Renderer.Backends.SVG);
 
   // Configure the rendering context.
-  renderer.resize(650, 125);
+  renderer.resize(650, 200);
   const context = renderer.getContext();
   context.setFont('Arial', 10);
 
@@ -21,11 +21,20 @@ function renderEightNotesStaff() {
   // Add a clef and time signature.
   stave.addClef('percussion').addTimeSignature('4/4');
 
+  const storage = getLocalStorage();
+  console.log(storage);
+
+  const annotation = new Annotation('R');
+
+  annotation
+    .setVerticalJustification(Annotation.VerticalJustify.BOTTOM)
+    .setFont('Arial', 14, 'bold');
+
   const notes1 = [
     new StaveNote({
       keys: ['A/4'],
       duration: '8',
-    }),
+    }).addModifier(annotation),
     new StaveNote({
       keys: ['A/4'],
       duration: '8',
@@ -81,6 +90,22 @@ function renderEightNotesStaff() {
 
   // Render the stave
   stave.setContext(context).draw();
+}
+
+function getLocalStorage() {
+  const regex = /^beat-/;
+  const beatArray = [];
+  // Loop through all items in localStorage and retrieve items that match the regular expression
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (regex.test(key)) {
+      const value = JSON.parse(localStorage.getItem(key));
+      if (value.noteValue === 'eight notes') {
+        beatArray.push(value);
+      }
+    }
+  }
+  return beatArray;
 }
 
 export default renderEightNotesStaff;
