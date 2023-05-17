@@ -22,11 +22,6 @@ function renderTripletNotesStaff() {
   // Add a clef and time signature.
   stave.addClef('percussion').addTimeSignature('4/4');
 
-  // const annotation = new Annotation('R');
-  // annotation
-  //   .setVerticalJustification(Annotation.VerticalJustify.BOTTOM)
-  //   .setFont('Arial', 14, 'bold');
-
   let notes1 = [
     new StaveNote({
       keys: ['A/4'],

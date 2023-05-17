@@ -44,8 +44,6 @@ function selectRow(e) {
   } else {
     throw Error('Something went wrong');
   }
-
-  // populateNotes();
 }
 
 //adds the event listener to each checkbox in the last column
@@ -66,7 +64,6 @@ function selectStickings(e) {
   const name = selection.name;
 
   saveSelection(selection, toArray, key, id, name);
-  // populateNotes();
   checkRow();
 
   if (id.length === 3) {
