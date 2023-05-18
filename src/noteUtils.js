@@ -19,19 +19,19 @@ function saveSelection(selection, array, key, id, name) {
 //checks is all inputs in the same row are checked and updates the UI to show that row's checkbox as checked
 function checkRow() {
   const beatsQuery = /^beat/;
-  const beatIdArray = [];
+  const stickingsArray = [];
 
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     if (beatsQuery.test(key)) {
       const value = JSON.parse(localStorage.getItem(key));
-      beatIdArray.push(value.sticking);
+      stickingsArray.push(value.sticking);
     }
   }
 
-  const toSet = new Set(beatIdArray);
-  if (beatIdArray.length === 4 && toSet.size === 1) {
-    const checkbox = document.getElementById(beatIdArray[0]);
+  const toSet = new Set(stickingsArray);
+  if (stickingsArray.length === 4 && toSet.size === 1) {
+    const checkbox = document.getElementById(stickingsArray[0]);
     checkbox.checked = true;
   } else {
     const lastColumn = document.querySelector('.last');

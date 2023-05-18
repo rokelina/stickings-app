@@ -1,6 +1,6 @@
 import './css/style.css';
 import { saveSelection, checkRow } from './noteUtils';
-import { eightNotesMenu, tripletsMenu } from './menuUtils';
+import { getEightNotesMenu, getTripletsMenu } from './menuUtils';
 import { clearStorage, clearUI } from './helpers';
 import renderEightNotesStaff from './eightNotesStaff';
 import renderTripletNotesStaff from './tripletNotesStaff';
@@ -83,7 +83,7 @@ function onSelectStickings() {
 }
 
 function onLoad() {
-  eightNotesMenu();
+  getEightNotesMenu();
   renderEightNotesStaff();
   clearStorage();
   clearUI();
@@ -97,11 +97,13 @@ function init() {
   document.getElementById('reset-button').addEventListener('click', clearUI);
   document
     .getElementById('eight-notes')
-    .addEventListener('click', eightNotesMenu);
+    .addEventListener('click', getEightNotesMenu);
   document
     .getElementById('eight-notes')
     .addEventListener('click', renderEightNotesStaff);
-  document.getElementById('triplets').addEventListener('click', tripletsMenu);
+  document
+    .getElementById('triplets')
+    .addEventListener('click', getTripletsMenu);
   document
     .getElementById('triplets')
     .addEventListener('click', renderTripletNotesStaff);

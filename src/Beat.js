@@ -20,28 +20,36 @@ class TwoHitBeat {
   }
 
   storeNotes() {
-    if (this.beat === 1) {
-      const first = new Note(this.first, 1);
-      const second = new Note(this.second, 2);
-      localStorage.setItem('note-1', JSON.stringify(first));
-      localStorage.setItem('note-2', JSON.stringify(second));
-    } else if (this.beat === 2) {
-      const first = new Note(this.first, 3);
-      const second = new Note(this.second, 4);
-      localStorage.setItem('note-3', JSON.stringify(first));
-      localStorage.setItem('note-4', JSON.stringify(second));
-    } else if (this.beat === 3) {
-      const first = new Note(this.first, 5);
-      const second = new Note(this.second, 6);
-      localStorage.setItem('note-5', JSON.stringify(first));
-      localStorage.setItem('note-6', JSON.stringify(second));
-    } else if (this.beat === 4) {
-      const first = new Note(this.first, 7);
-      const second = new Note(this.second, 8);
-      localStorage.setItem('note-7', JSON.stringify(first));
-      localStorage.setItem('note-8', JSON.stringify(second));
-    } else {
-      throw new Error('Something went wrong');
+    let first;
+    let second;
+
+    switch (this.beat) {
+      case 1:
+        first = new Note(this.first, 1);
+        second = new Note(this.second, 2);
+        localStorage.setItem('note-1', JSON.stringify(first));
+        localStorage.setItem('note-2', JSON.stringify(second));
+        break;
+      case 2:
+        first = new Note(this.first, 3);
+        second = new Note(this.second, 4);
+        localStorage.setItem('note-3', JSON.stringify(first));
+        localStorage.setItem('note-4', JSON.stringify(second));
+        break;
+      case 3:
+        first = new Note(this.first, 5);
+        second = new Note(this.second, 6);
+        localStorage.setItem('note-5', JSON.stringify(first));
+        localStorage.setItem('note-6', JSON.stringify(second));
+        break;
+      case 4:
+        first = new Note(this.first, 7);
+        second = new Note(this.second, 8);
+        localStorage.setItem('note-7', JSON.stringify(first));
+        localStorage.setItem('note-8', JSON.stringify(second));
+        break;
+      default:
+        throw new Error('Something went wrong');
     }
   }
 }
@@ -72,36 +80,45 @@ class ThreeHitBeat {
   }
 
   storeNotes() {
-    if (this.beat === 1) {
-      const first = new Note(this.first, 1);
-      const second = new Note(this.second, 2);
-      const third = new Note(this.third, 3);
-      localStorage.setItem('note-1', JSON.stringify(first));
-      localStorage.setItem('note-2', JSON.stringify(second));
-      localStorage.setItem('note-3', JSON.stringify(third));
-    } else if (this.beat === 2) {
-      const first = new Note(this.first, 4);
-      const second = new Note(this.second, 5);
-      const third = new Note(this.third, 6);
-      localStorage.setItem('note-4', JSON.stringify(first));
-      localStorage.setItem('note-5', JSON.stringify(second));
-      localStorage.setItem('note-6', JSON.stringify(third));
-    } else if (this.beat === 3) {
-      const first = new Note(this.first, 7);
-      const second = new Note(this.second, 8);
-      const third = new Note(this.third, 9);
-      localStorage.setItem('note-7', JSON.stringify(first));
-      localStorage.setItem('note-8', JSON.stringify(second));
-      localStorage.setItem('note-9', JSON.stringify(third));
-    } else if (this.beat === 4) {
-      const first = new Note(this.first, 10);
-      const second = new Note(this.second, 11);
-      const third = new Note(this.third, 12);
-      localStorage.setItem('note-10', JSON.stringify(first));
-      localStorage.setItem('note-11', JSON.stringify(second));
-      localStorage.setItem('note-12', JSON.stringify(third));
-    } else {
-      throw new Error('Something went wrong');
+    let first;
+    let second;
+    let third;
+
+    switch (this.beat) {
+      case 1:
+        first = new Note(this.first, 1);
+        second = new Note(this.second, 2);
+        third = new Note(this.third, 3);
+        localStorage.setItem('note-1', JSON.stringify(first));
+        localStorage.setItem('note-2', JSON.stringify(second));
+        localStorage.setItem('note-3', JSON.stringify(third));
+        break;
+      case 2:
+        first = new Note(this.first, 4);
+        second = new Note(this.second, 5);
+        third = new Note(this.third, 6);
+        localStorage.setItem('note-4', JSON.stringify(first));
+        localStorage.setItem('note-5', JSON.stringify(second));
+        localStorage.setItem('note-6', JSON.stringify(third));
+        break;
+      case 3:
+        first = new Note(this.first, 7);
+        second = new Note(this.second, 8);
+        third = new Note(this.third, 9);
+        localStorage.setItem('note-7', JSON.stringify(first));
+        localStorage.setItem('note-8', JSON.stringify(second));
+        localStorage.setItem('note-9', JSON.stringify(third));
+        break;
+      case 4:
+        first = new Note(this.first, 10);
+        second = new Note(this.second, 11);
+        third = new Note(this.third, 12);
+        localStorage.setItem('note-10', JSON.stringify(first));
+        localStorage.setItem('note-11', JSON.stringify(second));
+        localStorage.setItem('note-12', JSON.stringify(third));
+        break;
+      default:
+        throw new Error('Something went wrong');
     }
   }
 }

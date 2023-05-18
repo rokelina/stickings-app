@@ -26,22 +26,20 @@ function createMenu(permutationObject) {
 }
 
 function removeMenu() {
-  const noteButtons = document.querySelectorAll('.note');
   const menuInputs = document.querySelectorAll('.sticking');
   const rowCheckbox = document.querySelectorAll('.select-row');
 
-  noteButtons.forEach((button) => button.remove());
   menuInputs.forEach((input) => input.remove());
   rowCheckbox.forEach((checkbox) => checkbox.remove());
 }
 
-function eightNotesMenu() {
+function getEightNotesMenu() {
   removeMenu();
   createMenu(eightNotesPermutations);
 }
-function tripletsMenu() {
+function getTripletsMenu() {
   removeMenu();
   createMenu(tripletPermutations);
 }
 
-export { eightNotesMenu, tripletsMenu };
+export { getEightNotesMenu, getTripletsMenu };
