@@ -2,13 +2,13 @@
 import { TwoHitBeat, ThreeHitBeat } from './Beat';
 
 // Saves selected stickings to storage, creates the Note instances and saves them in storage
-function saveSelection(selection, array, key, id, name) {
+function saveSelection(array, key, id, name) {
   if (id.length === 3) {
-    selection = new TwoHitBeat(array, key, id);
+    const selection = new TwoHitBeat(array, key, id);
     localStorage.setItem(name, JSON.stringify(selection.describe));
     selection.storeNotes();
   } else if (id.length === 4) {
-    selection = new ThreeHitBeat(array, key, id);
+    const selection = new ThreeHitBeat(array, key, id);
     localStorage.setItem(name, JSON.stringify(selection.describe));
     selection.storeNotes();
   } else {

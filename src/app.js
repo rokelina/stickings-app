@@ -5,6 +5,15 @@ import { clearStorage, clearUI } from './helpers';
 import renderEightNotesStaff from './eightNotesStaff';
 import renderTripletNotesStaff from './tripletNotesStaff';
 
+function renderStaff() {
+  const label = document.querySelector('label');
+  if (label.textContent.length === 2) {
+    renderEightNotesStaff();
+  } else {
+    renderTripletNotesStaff();
+  }
+}
+
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
   const lastColumn = document.querySelector('.last');
@@ -29,21 +38,16 @@ function selectRow(e) {
     const id = input.id;
     const name = input.name;
 
-    saveSelection(input, toArray, key, id, name);
+    saveSelection(toArray, key, id, name);
   }
 
+  //When unchecking checkbox, clears storage and clears radio inputs
   if (!isChecked) {
     clearStorage();
     clearUI();
   }
 
-  if (rowName.length === 2) {
-    renderEightNotesStaff();
-  } else if (rowName.length === 3) {
-    renderTripletNotesStaff();
-  } else {
-    throw Error('Something went wrong');
-  }
+  renderStaff();
 }
 
 //adds the event listener to each checkbox in the last column
@@ -56,23 +60,16 @@ function onSelectRow() {
 }
 
 function selectStickings(e) {
-  let selection = e.target;
-  const dataHands = selection.dataset.hands;
+  let input = e.target;
+  const dataHands = input.dataset.hands;
   const toArray = dataHands.split(',');
-  const key = +selection.getAttribute('key');
-  const id = selection.id;
-  const name = selection.name;
+  const key = +input.getAttribute('key');
+  const id = input.id;
+  const name = input.name;
 
-  saveSelection(selection, toArray, key, id, name);
+  saveSelection(toArray, key, id, name);
   checkRow();
-
-  if (id.length === 3) {
-    renderEightNotesStaff();
-  } else if (id.length === 4) {
-    renderTripletNotesStaff();
-  } else {
-    throw Error('Something went wrong');
-  }
+  renderStaff();
 }
 
 function onSelectStickings() {
@@ -83,10 +80,10 @@ function onSelectStickings() {
 }
 
 function onLoad() {
-  getEightNotesMenu();
-  renderEightNotesStaff();
   clearStorage();
   clearUI();
+  getEightNotesMenu();
+  renderEightNotesStaff();
 }
 
 function init() {
@@ -95,6 +92,9 @@ function init() {
     .getElementById('reset-button')
     .addEventListener('click', clearStorage);
   document.getElementById('reset-button').addEventListener('click', clearUI);
+  document
+    .getElementById('reset-button')
+    .addEventListener('click', renderStaff);
   document
     .getElementById('eight-notes')
     .addEventListener('click', getEightNotesMenu);

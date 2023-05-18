@@ -16,12 +16,18 @@ function renderEightNotesStaff() {
   const context = renderer.getContext();
   context.setFont('Arial', 10);
 
+  //Add Stave
   const stave = new Stave(25, 40, 600);
 
   // Add a clef and time signature.
   stave.addClef('percussion').addTimeSignature('4/4');
 
-  let notes1 = [
+  let notes1;
+  let notes2;
+  let notes3;
+  let notes4;
+
+  notes1 = [
     new StaveNote({
       keys: ['A/4'],
       duration: '8',
@@ -31,7 +37,7 @@ function renderEightNotesStaff() {
       duration: '8',
     }),
   ];
-  let notes2 = [
+  notes2 = [
     new StaveNote({
       keys: ['A/4'],
       duration: '8',
@@ -41,7 +47,7 @@ function renderEightNotesStaff() {
       duration: '8',
     }),
   ];
-  let notes3 = [
+  notes3 = [
     new StaveNote({
       keys: ['A/4'],
       duration: '8',
@@ -51,7 +57,7 @@ function renderEightNotesStaff() {
       duration: '8',
     }),
   ];
-  let notes4 = [
+  notes4 = [
     new StaveNote({
       keys: ['A/4'],
       duration: '8',
@@ -63,6 +69,7 @@ function renderEightNotesStaff() {
   ];
 
   const storage = getLocalStorage();
+
   if (storage.length) {
     for (const value of storage) {
       switch (value.beat) {
