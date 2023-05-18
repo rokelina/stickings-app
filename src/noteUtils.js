@@ -1,4 +1,3 @@
-// helper functions
 import { TwoHitBeat, ThreeHitBeat } from './Beat';
 
 // Saves selected stickings to storage, creates the Note instances and saves them in storage

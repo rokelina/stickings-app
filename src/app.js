@@ -2,17 +2,9 @@ import './css/style.css';
 import { saveSelection, checkRow } from './noteUtils';
 import { getEightNotesMenu, getTripletsMenu } from './menuUtils';
 import { clearStorage, clearUI } from './helpers';
-import renderEightNotesStaff from './eightNotesStaff';
-import renderTripletNotesStaff from './tripletNotesStaff';
-
-function renderStaff() {
-  const label = document.querySelector('label');
-  if (label.textContent.length === 2) {
-    renderEightNotesStaff();
-  } else {
-    renderTripletNotesStaff();
-  }
-}
+import renderEightNotesStaff from './staff/eightNotesStaff';
+import renderTripletNotesStaff from './staff/tripletNotesStaff';
+import renderStaff from './staff/renderStaff';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
