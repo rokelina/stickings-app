@@ -80,76 +80,77 @@ function renderTripletNotesStaff() {
   ];
 
   const storage = getLocalStorage();
-
-  for (const value of storage) {
-    switch (value.beat) {
-      case 1:
-        notes1 = [
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.firstNote)),
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.secondNote)),
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.thirdNote)),
-        ];
-        break;
-      case 2:
-        notes2 = [
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.firstNote)),
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.secondNote)),
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.thirdNote)),
-        ];
-        break;
-      case 3:
-        notes3 = [
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.firstNote)),
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.secondNote)),
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.thirdNote)),
-        ];
-        break;
-      case 4:
-        notes4 = [
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.firstNote)),
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.secondNote)),
-          new StaveNote({
-            keys: ['A/4'],
-            duration: '8',
-          }).addModifier(annotate(value.thirdNote)),
-        ];
-        break;
-      default:
-        console.log('Something is wrong');
-        break;
+  if (storage.length) {
+    for (const value of storage) {
+      switch (value.beat) {
+        case 1:
+          notes1 = [
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.firstNote)),
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.secondNote)),
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.thirdNote)),
+          ];
+          break;
+        case 2:
+          notes2 = [
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.firstNote)),
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.secondNote)),
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.thirdNote)),
+          ];
+          break;
+        case 3:
+          notes3 = [
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.firstNote)),
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.secondNote)),
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.thirdNote)),
+          ];
+          break;
+        case 4:
+          notes4 = [
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.firstNote)),
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.secondNote)),
+            new StaveNote({
+              keys: ['A/4'],
+              duration: '8',
+            }).addModifier(annotate(value.thirdNote)),
+          ];
+          break;
+        default:
+          console.log('Something is wrong');
+          break;
+      }
     }
   }
 
