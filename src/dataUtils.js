@@ -1,17 +1,51 @@
 import { TwoHitBeat, ThreeHitBeat } from './Beat';
+import { clearStorage, clearUI } from './helpers';
 
 // Saves selected stickings to storage, creates the Note instances and saves them in storage
-function saveSelection(array, key, id, name) {
+function saveSelection(toArray, key, id, name) {
   if (id.length === 3) {
-    const selection = new TwoHitBeat(array, key, id);
+    const selection = new TwoHitBeat(toArray, key, id);
     localStorage.setItem(name, JSON.stringify(selection.describe));
     selection.storeNotes();
   } else if (id.length === 4) {
-    const selection = new ThreeHitBeat(array, key, id);
+    const selection = new ThreeHitBeat(toArray, key, id);
     localStorage.setItem(name, JSON.stringify(selection.describe));
     selection.storeNotes();
   } else {
     throw Error('Something went wrong');
+  }
+}
+
+function saveRow(e) {
+  const lastColumn = document.querySelector('.last');
+  const rowCheckboxes = lastColumn.querySelectorAll('input[type="checkbox"]');
+  let isChecked = e.target.checked;
+  const rowName = e.target.name;
+  const radioInputs = document.querySelectorAll(
+    `input[type="radio"][id^="${rowName}"]`
+  );
+
+  for (const checkbox of rowCheckboxes) {
+    if (checkbox.name !== rowName && isChecked) {
+      checkbox.checked = false;
+    }
+  }
+
+  for (const input of radioInputs) {
+    input.checked = isChecked;
+    const data = input.dataset.hands;
+    const toArray = data.split(',');
+    const key = +input.getAttribute('key');
+    const id = input.id;
+    const name = input.name;
+
+    saveSelection(toArray, key, id, name);
+  }
+
+  //When unchecking checkbox, clears storage and clears radio inputs
+  if (!isChecked) {
+    clearStorage();
+    clearUI();
   }
 }
 
@@ -41,4 +75,4 @@ function checkRow() {
   }
 }
 
-export { saveSelection, checkRow };
+export { saveSelection, saveRow, checkRow };
