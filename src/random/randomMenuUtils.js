@@ -1,8 +1,11 @@
 // remove 'menu card'
-function removeMenuCard() {
+function removeMenuContainer() {
   const parentMenu = document.getElementById('menu');
-  const menuCard = document.getElementById('menu-card');
-  parentMenu.removeChild(menuCard);
+  if (parentMenu.firstChild) {
+    while (parentMenu.firstChild) {
+      parentMenu.removeChild(parentMenu.firstChild);
+    }
+  }
 }
 
 // create 'random menu'
@@ -43,4 +46,4 @@ function createRandomMenu() {
   parentMenu.appendChild(container);
 }
 
-export { removeMenuCard, createRandomMenu };
+export { removeMenuContainer, createRandomMenu };
