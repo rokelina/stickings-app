@@ -129,8 +129,6 @@ button:hover{
 .menu{
     display: flex;
     justify-content: center;
-    margin-top: auto;
-    margin-bottom: 1rem;
 }
 
 .menu-container{

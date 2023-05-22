@@ -5,6 +5,7 @@ import { clearStorage, clearUI } from './helpers';
 import renderEightNotesStaff from './staff/eightNotesStaff';
 import renderTripletNotesStaff from './staff/tripletNotesStaff';
 import renderStaff from './staff/renderStaff';
+import { removeMenuCard, createRandomMenu } from './random/randomMenuUtils';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
@@ -41,6 +42,11 @@ function onSelectStickings() {
   }
 }
 
+function onRandom() {
+  removeMenuCard();
+  createRandomMenu();
+}
+
 function onLoad() {
   clearStorage();
   clearUI();
@@ -75,6 +81,9 @@ function init() {
   document
     .getElementById('menu-container')
     .addEventListener('click', onSelectRow);
+  document
+    .getElementById('random-stickings')
+    .addEventListener('click', onRandom);
 }
 
 init();
