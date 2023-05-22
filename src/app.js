@@ -1,5 +1,5 @@
 import './css/style.css';
-import { saveSelection, checkRow } from './noteUtils';
+import { saveSelection, saveRow, checkRow } from './dataUtils';
 import { getEightNotesMenu, getTripletsMenu } from './menuUtils';
 import { clearStorage, clearUI } from './helpers';
 import renderEightNotesStaff from './staff/eightNotesStaff';
@@ -8,37 +8,7 @@ import renderStaff from './staff/renderStaff';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
-  const lastColumn = document.querySelector('.last');
-  const rowCheckboxes = lastColumn.querySelectorAll('input[type="checkbox"]');
-  let isChecked = e.target.checked;
-  const rowName = e.target.name;
-  const radioInputs = document.querySelectorAll(
-    `input[type="radio"][id^="${rowName}"]`
-  );
-
-  for (const checkbox of rowCheckboxes) {
-    if (checkbox.name !== rowName && isChecked) {
-      checkbox.checked = false;
-    }
-  }
-
-  for (const input of radioInputs) {
-    input.checked = isChecked;
-    const data = input.dataset.hands;
-    const toArray = data.split(',');
-    const key = +input.getAttribute('key');
-    const id = input.id;
-    const name = input.name;
-
-    saveSelection(toArray, key, id, name);
-  }
-
-  //When unchecking checkbox, clears storage and clears radio inputs
-  if (!isChecked) {
-    clearStorage();
-    clearUI();
-  }
-
+  saveRow(e);
   renderStaff();
 }
 

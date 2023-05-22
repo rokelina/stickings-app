@@ -161,6 +161,7 @@ function renderTripletNotesStaff() {
     }
   }
 
+  //map
   const allNotes = notes1.concat(notes2).concat(notes3).concat(notes4);
 
   // This hides the normal stems and flags.
