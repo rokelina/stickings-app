@@ -1,8 +1,11 @@
 // remove 'menu card'
-function removeMenuCard() {
+function removeMenuContainer() {
   const parentMenu = document.getElementById('menu');
-  const menuCard = document.getElementById('menu-card');
-  parentMenu.removeChild(menuCard);
+  if (parentMenu.firstChild) {
+    while (parentMenu.firstChild) {
+      parentMenu.removeChild(parentMenu.firstChild);
+    }
+  }
 }
 
 // create 'random menu'
@@ -12,35 +15,45 @@ function createRandomMenu() {
   container.id = 'random-container';
   container.className = 'random-container';
 
+  const options = document.createElement('div');
+  options.id = 'random-options';
+  options.className = 'random-options';
+
+  const controls = document.createElement('div');
+  controls.id = 'random-controls';
+  controls.className = 'random-controls';
+
   const fragment = document.createDocumentFragment();
   const radioNames = ['combinations', 'eights', 'triplets'];
 
   radioNames.forEach((name) => {
-    // Create a label element
     const label = document.createElement('label');
 
-    // Create a radio input element
     const radioInput = document.createElement('input');
     radioInput.type = 'radio';
     radioInput.name = 'options';
     radioInput.value = name;
 
-    // Append the radio input to the label
     label.appendChild(radioInput);
     label.id = name;
 
-    // Create a text node for the label text
     const labelText = document.createTextNode(name);
 
-    // Append the label text to the label
     label.appendChild(labelText);
 
-    // Append the label to the fragment
     fragment.appendChild(label);
   });
 
-  container.appendChild(fragment);
+  const button = document.createElement('button');
+  button.id = 'refresh-button';
+  button.className = 'refresh-button';
+  button.textContent = '🔁 Refresh';
+
+  options.appendChild(fragment);
+  controls.appendChild(button);
+  container.appendChild(options);
+  container.appendChild(controls);
   parentMenu.appendChild(container);
 }
 
-export { removeMenuCard, createRandomMenu };
+export { removeMenuContainer, createRandomMenu };

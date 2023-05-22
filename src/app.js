@@ -5,7 +5,10 @@ import { clearStorage, clearUI } from './helpers';
 import renderEightNotesStaff from './staff/eightNotesStaff';
 import renderTripletNotesStaff from './staff/tripletNotesStaff';
 import renderStaff from './staff/renderStaff';
-import { removeMenuCard, createRandomMenu } from './random/randomMenuUtils';
+import {
+  removeMenuContainer,
+  createRandomMenu,
+} from './random/randomMenuUtils';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
@@ -43,19 +46,11 @@ function onSelectStickings() {
 }
 
 function onRandom() {
-  removeMenuCard();
+  removeMenuContainer();
   createRandomMenu();
 }
 
-function onLoad() {
-  clearStorage();
-  clearUI();
-  getEightNotesMenu();
-  renderEightNotesStaff();
-}
-
-function init() {
-  document.addEventListener('DOMContentLoaded', onLoad);
+function attachEventListeners() {
   document
     .getElementById('reset-button')
     .addEventListener('click', clearStorage);
@@ -64,23 +59,40 @@ function init() {
     .getElementById('reset-button')
     .addEventListener('click', renderStaff);
   document
-    .getElementById('eight-notes')
-    .addEventListener('click', getEightNotesMenu);
-  document
-    .getElementById('eight-notes')
-    .addEventListener('click', renderEightNotesStaff);
-  document
-    .getElementById('triplets')
-    .addEventListener('click', getTripletsMenu);
-  document
-    .getElementById('triplets')
-    .addEventListener('click', renderTripletNotesStaff);
-  document
     .getElementById('menu-container')
     .addEventListener('click', onSelectStickings);
   document
     .getElementById('menu-container')
     .addEventListener('click', onSelectRow);
+}
+
+function onEightNotesClick() {
+  getEightNotesMenu();
+  renderEightNotesStaff();
+  attachEventListeners();
+}
+function onTripletNotesClick() {
+  getTripletsMenu();
+  renderTripletNotesStaff();
+  attachEventListeners();
+}
+function onLoad() {
+  clearStorage();
+  clearUI();
+  getEightNotesMenu();
+  renderEightNotesStaff();
+  attachEventListeners();
+}
+
+function init() {
+  document.addEventListener('DOMContentLoaded', onLoad);
+
+  document
+    .getElementById('eight-notes')
+    .addEventListener('click', onEightNotesClick);
+  document
+    .getElementById('triplets')
+    .addEventListener('click', onTripletNotesClick);
   document
     .getElementById('random-stickings')
     .addEventListener('click', onRandom);
