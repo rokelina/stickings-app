@@ -10,6 +10,7 @@ import {
   createRandomMenu,
 } from './random/randomMenuUtils';
 import renderEmptyStaff from './staff/emptyStaff';
+import randomAllNotes from './random/randomAll';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
@@ -50,6 +51,10 @@ function onRandom() {
   removeMenuContainer();
   createRandomMenu();
   renderEmptyStaff();
+
+  document
+    .getElementById('refresh-button')
+    .addEventListener('click', randomAllNotes);
 }
 
 function attachEventListeners() {
