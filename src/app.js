@@ -9,6 +9,7 @@ import {
   removeMenuContainer,
   createRandomMenu,
 } from './random/randomMenuUtils';
+import renderEmptyStaff from './staff/emptyStaff';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
@@ -48,6 +49,7 @@ function onSelectStickings() {
 function onRandom() {
   removeMenuContainer();
   createRandomMenu();
+  renderEmptyStaff();
 }
 
 function attachEventListeners() {

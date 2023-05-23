@@ -47,7 +47,7 @@ function createRandomMenu() {
   const button = document.createElement('button');
   button.id = 'refresh-button';
   button.className = 'refresh-button';
-  button.textContent = '🔁 Refresh';
+  button.textContent = '🔁 Generate';
 
   options.appendChild(fragment);
   controls.appendChild(button);
