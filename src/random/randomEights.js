@@ -1,15 +1,12 @@
 import { Vex } from 'vexflow';
-import { randomAnnotate, drawStaff } from './randomHelpers';
+import { randomAnnotate, drawStaff } from '../staff/staffHelpers';
 function randomEightNotes() {
   const { StaveNote, Beam, Formatter } = Vex.Flow;
-
   const [context, stave] = drawStaff();
-
-  const beats = [0, 1, 2, 3];
 
   let allBeats = [];
 
-  beats.forEach((beat) => {
+  for (let i = 0; i < 4; i++) {
     let notes = [
       new StaveNote({
         keys: ['A/4'],
@@ -22,7 +19,7 @@ function randomEightNotes() {
     ];
 
     allBeats.push(notes);
-  });
+  }
 
   const allNotes = allBeats[0]
     .concat(allBeats[1])

@@ -1,7 +1,6 @@
-// functions that create / update / delete menu
-
 import { eightNotesPermutations, tripletPermutations } from './permutations';
 
+//creates parent container, menu-card, beat fieldsets, reset button
 function createMenuContainer() {
   const parentContainer = document.getElementById('menu');
 
@@ -62,7 +61,9 @@ function createMenuContainer() {
   parentContainer.appendChild(menuCard);
 }
 
+//creates the input elements on each fieldset
 function createMenu(permutationObject) {
+  //call to create parent container first
   createMenuContainer();
 
   const columns = document.querySelectorAll('.column');
@@ -87,33 +88,11 @@ function createMenu(permutationObject) {
   });
 }
 
-function removeMenu() {
-  const menuCard = document.querySelector('menu-card');
-  while (menuCard.firstChild) {
-    menuCard.removeChild(menuCard.firstChild);
-  }
-
-  // const menuContainer = document.getElementById('menu-container');
-  // const menuOptions = document.getElementById('menu-options');
-
-  // menuContainer.remove();
-  // menuOptions.remove();
-  // const menuInputs = document.querySelectorAll('.sticking');
-  // const rowCheckbox = document.querySelectorAll('.select-row');
-
-  // menuInputs.forEach((input) => input.remove());
-  // rowCheckbox.forEach((checkbox) => checkbox.remove());
-}
-
 function getEightNotesMenu() {
-  // removeMenu();
-  // createMenuContainer();
   createMenu(eightNotesPermutations);
 }
 function getTripletsMenu() {
-  // removeMenu();
-  // createMenuContainer();
   createMenu(tripletPermutations);
 }
 
-export { getEightNotesMenu, getTripletsMenu, createMenuContainer };
+export { getEightNotesMenu, getTripletsMenu };

@@ -5,13 +5,11 @@ import { clearStorage, clearUI } from './helpers';
 import renderEightNotesStaff from './staff/eightNotesStaff';
 import renderTripletNotesStaff from './staff/tripletNotesStaff';
 import renderStaff from './staff/renderStaff';
-import {
-  removeMenuContainer,
-  createRandomMenu,
-} from './random/randomMenuUtils';
+import createRandomMenu from './random/randomMenuUtils';
 import randomAllNotes from './random/randomAll';
 import randomEightNotes from './random/randomEights';
-import { drawStaff } from './random/randomHelpers';
+import randomTripletNotes from './random/randomTriplets';
+import { drawStaff } from './staff/staffHelpers';
 
 // callback to select the entire row when the checkbox is checked
 function selectRow(e) {
@@ -49,13 +47,12 @@ function onSelectStickings() {
 }
 
 function onRandom() {
-  removeMenuContainer();
   createRandomMenu();
   drawStaff();
 
   document
     .getElementById('refresh-button')
-    .addEventListener('click', randomEightNotes);
+    .addEventListener('click', randomTripletNotes);
 }
 
 function attachEventListeners() {

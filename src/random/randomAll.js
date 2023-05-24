@@ -1,61 +1,45 @@
 import { Vex } from 'vexflow';
+import { randomAnnotate, drawStaff } from '../staff/staffHelpers';
+
 function randomAllNotes() {
-  const { Renderer, Stave, StaveNote, Beam, Tuplet, Formatter, Annotation } =
-    Vex.Flow;
-
-  const parentDiv = document.getElementById('notes-graph');
-  while (parentDiv.firstChild) {
-    parentDiv.removeChild(parentDiv.firstChild);
-  }
-
-  const renderer = new Renderer(parentDiv, Renderer.Backends.SVG);
-  renderer.resize(650, 200);
-  const context = renderer.getContext();
-  context.setFont('Arial', 10);
-
-  const stave = new Stave(25, 40, 600);
-
-  stave.addClef('percussion').addTimeSignature('4/4');
-
-  const beats = [0, 1, 2, 3];
+  const { StaveNote, Beam, Tuplet, Formatter } = Vex.Flow;
+  const [context, stave] = drawStaff();
 
   let allBeats = [];
 
-  beats.forEach((beat) => {
+  for (let i = 0; i < 4; i++) {
     let notes;
-
     if (Math.random() < 0.5) {
-      //pick triplet
-      // pick L or R for each staff note
+      //pick triplet notes
       notes = [
         new StaveNote({
           keys: ['A/4'],
           duration: '8',
-        }).addModifier(annotate()),
+        }).addModifier(randomAnnotate()),
         new StaveNote({
           keys: ['A/4'],
           duration: '8',
-        }).addModifier(annotate()),
+        }).addModifier(randomAnnotate()),
         new StaveNote({
           keys: ['A/4'],
           duration: '8',
-        }).addModifier(annotate()),
+        }).addModifier(randomAnnotate()),
       ];
     } else {
-      //pick eight
+      //pick eight notes
       notes = [
         new StaveNote({
           keys: ['A/4'],
           duration: '8',
-        }).addModifier(annotate()),
+        }).addModifier(randomAnnotate()),
         new StaveNote({
           keys: ['A/4'],
           duration: '8',
-        }).addModifier(annotate()),
+        }).addModifier(randomAnnotate()),
       ];
     }
     allBeats.push(notes);
-  });
+  }
 
   const allNotes = allBeats[0]
     .concat(allBeats[1])
@@ -87,20 +71,6 @@ function randomAllNotes() {
   //draw tuplets
   if (tuplets !== []) {
     tuplets.forEach((t) => t.setContext(context).draw());
-  }
-
-  // Render the stave
-  stave.setContext(context).draw();
-  function annotate() {
-    let hand;
-    if (Math.random() < 0.5) {
-      hand = 'R';
-    } else {
-      hand = 'L';
-    }
-    return new Annotation(hand)
-      .setVerticalJustification(Annotation.VerticalJustify.BOTTOM)
-      .setFont('Arial', 14, 'bold');
   }
 }
 
