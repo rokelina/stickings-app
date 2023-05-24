@@ -1,26 +1,9 @@
 import { Vex } from 'vexflow';
+import { annotate, drawStaff, getLocalStorage } from './staffHelpers';
 
 function renderEightNotesStaff() {
-  const parentDiv = document.getElementById('notes-graph');
-
-  while (parentDiv.firstChild) {
-    parentDiv.removeChild(parentDiv.firstChild);
-  }
-
-  const { Renderer, Stave, StaveNote, Beam, Formatter, Annotation } = Vex.Flow;
-  // Create an SVG renderer and attach it to the DIV element.
-  const renderer = new Renderer(parentDiv, Renderer.Backends.SVG);
-
-  // Configure the rendering context.
-  renderer.resize(650, 200);
-  const context = renderer.getContext();
-  context.setFont('Arial', 10);
-
-  //Add Stave
-  const stave = new Stave(25, 40, 600);
-
-  // Add a clef and time signature.
-  stave.addClef('percussion').addTimeSignature('4/4');
+  const { StaveNote, Beam, Formatter } = Vex.Flow;
+  const [context, stave] = drawStaff();
 
   let notes1;
   let notes2;
@@ -144,32 +127,6 @@ function renderEightNotesStaff() {
   beams.forEach((b) => {
     b.setContext(context).draw();
   });
-
-  // Render the stave
-  stave.setContext(context).draw();
-
-  //helper function
-  function annotate(hand) {
-    return new Annotation(hand)
-      .setVerticalJustification(Annotation.VerticalJustify.BOTTOM)
-      .setFont('Arial', 14, 'bold');
-  }
-}
-
-function getLocalStorage() {
-  const regex = /^beat-/;
-  const beatArray = [];
-  // Loop through all items in localStorage and retrieve items that match the regular expression
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (regex.test(key)) {
-      const value = JSON.parse(localStorage.getItem(key));
-      if (value.noteValue === 'eight notes') {
-        beatArray.push(value);
-      }
-    }
-  }
-  return beatArray;
 }
 
 export default renderEightNotesStaff;

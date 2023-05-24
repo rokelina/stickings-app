@@ -42,7 +42,7 @@ button:hover{
     background-color: #e4e4e4;
     cursor: pointer;
 }
-.controls-button, .reset{
+.controls-button, .reset, .refresh-button{
     border-radius: 15px;
     padding: 0.5rem;
     margin-left: 0.5rem;
@@ -129,8 +129,6 @@ button:hover{
 .menu{
     display: flex;
     justify-content: center;
-    margin-top: auto;
-    margin-bottom: 1rem;
 }
 
 .menu-container{
@@ -164,8 +162,16 @@ button:hover{
     padding: 0.5rem;
     align-items: center;
 }
-.random-mode, .rows-mode{
-    margin: 0 0.6rem;
+
+.random-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.random-options, .random-controls{
+    padding: 1rem;
 }
 
 .reset{
