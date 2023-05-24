@@ -1,5 +1,12 @@
 import { Vex } from 'vexflow';
 
+function annotate(hand) {
+  const { Annotation } = Vex.Flow;
+  return new Annotation(hand)
+    .setVerticalJustification(Annotation.VerticalJustify.BOTTOM)
+    .setFont('Arial', 14, 'bold');
+}
+
 function randomAnnotate() {
   const { Annotation } = Vex.Flow;
 
@@ -36,4 +43,18 @@ function drawStaff() {
   return [context, stave];
 }
 
-export { randomAnnotate, drawStaff };
+function getLocalStorage() {
+  const regex = /^beat-/;
+  const beatArray = [];
+  // Loop through all items in localStorage and retrieve items that match the regular expression
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (regex.test(key)) {
+      const value = JSON.parse(localStorage.getItem(key));
+      beatArray.push(value);
+    }
+  }
+  return beatArray;
+}
+
+export { annotate, randomAnnotate, drawStaff, getLocalStorage };

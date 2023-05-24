@@ -1,3 +1,7 @@
+import randomAllNotes from './randomAll';
+import randomEightNotes from './randomEights';
+import randomTripletNotes from './randomTriplets';
+
 function createRandomMenu() {
   // removes childs from parent container
   const parentMenu = document.getElementById('menu');
@@ -53,4 +57,24 @@ function createRandomMenu() {
   parentMenu.appendChild(container);
 }
 
-export default createRandomMenu;
+function generateRandom() {
+  let selected = document.querySelector('input[name="options"]:checked');
+
+  if (selected) {
+    switch (selected.value) {
+      case 'combinations':
+        randomAllNotes();
+        break;
+      case 'eights':
+        randomEightNotes();
+        break;
+      case 'triplets':
+        randomTripletNotes();
+        break;
+      default:
+        throw new Error('Something went wrong');
+    }
+  }
+}
+
+export { createRandomMenu, generateRandom };

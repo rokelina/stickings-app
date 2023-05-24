@@ -5,10 +5,7 @@ import { clearStorage, clearUI } from './helpers';
 import renderEightNotesStaff from './staff/eightNotesStaff';
 import renderTripletNotesStaff from './staff/tripletNotesStaff';
 import renderStaff from './staff/renderStaff';
-import createRandomMenu from './random/randomMenuUtils';
-import randomAllNotes from './random/randomAll';
-import randomEightNotes from './random/randomEights';
-import randomTripletNotes from './random/randomTriplets';
+import { createRandomMenu, generateRandom } from './random/randomUtils';
 import { drawStaff } from './staff/staffHelpers';
 
 // callback to select the entire row when the checkbox is checked
@@ -49,10 +46,10 @@ function onSelectStickings() {
 function onRandom() {
   createRandomMenu();
   drawStaff();
-
+  // attach event listener to 'generate' button
   document
     .getElementById('refresh-button')
-    .addEventListener('click', randomTripletNotes);
+    .addEventListener('click', generateRandom);
 }
 
 function attachEventListeners() {
@@ -73,11 +70,15 @@ function attachEventListeners() {
 
 function onEightNotesClick() {
   getEightNotesMenu();
+  clearStorage();
+  clearUI();
   renderEightNotesStaff();
   attachEventListeners();
 }
 function onTripletNotesClick() {
   getTripletsMenu();
+  clearStorage();
+  clearUI();
   renderTripletNotesStaff();
   attachEventListeners();
 }
