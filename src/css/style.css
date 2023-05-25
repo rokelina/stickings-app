@@ -42,7 +42,7 @@ button:hover{
     background-color: #e4e4e4;
     cursor: pointer;
 }
-.controls-button, .reset, .refresh-button{
+.controls-button, .reset, .generate-button{
     border-radius: 15px;
     padding: 0.5rem;
     margin-left: 0.5rem;

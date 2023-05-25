@@ -48,7 +48,7 @@ function onRandom() {
   drawStaff();
   // attach event listener to 'generate' button
   document
-    .getElementById('refresh-button')
+    .getElementById('generate-button')
     .addEventListener('click', generateRandom);
 }
 

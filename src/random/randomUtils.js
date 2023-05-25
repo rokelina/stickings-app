@@ -46,9 +46,9 @@ function createRandomMenu() {
   });
 
   const button = document.createElement('button');
-  button.id = 'refresh-button';
-  button.className = 'refresh-button';
-  button.textContent = '🔁 Generate';
+  button.id = 'generate-button';
+  button.className = 'generate-button';
+  button.textContent = 'Generate';
 
   options.appendChild(fragment);
   controls.appendChild(button);
