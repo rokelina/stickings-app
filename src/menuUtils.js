@@ -37,7 +37,7 @@ function createMenuContainer() {
     { id: 'beat-2', name: 'beat-2', legend: 'Beat 2', className: 'column' },
     { id: 'beat-3', name: 'beat-3', legend: 'Beat 3', className: 'column' },
     { id: 'beat-4', name: 'beat-4', legend: 'Beat 4', className: 'column' },
-    { id: 'rows', legend: 'Row', className: 'column last' },
+    { id: 'rows', name: 'row', legend: 'Row', className: 'column last' },
   ];
 
   // Create the menu items dynamically
