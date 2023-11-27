@@ -49,7 +49,7 @@ function saveRow(e) {
   }
 }
 
-//checks is all inputs in the same row are checked and updates the UI to show that row's checkbox as checked
+//checks if all inputs in the same row are checked and updates the UI to show that row's checkbox as checked
 function checkRow() {
   const beatsQuery = /^beat/;
   const stickingsArray = [];

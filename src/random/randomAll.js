@@ -69,7 +69,7 @@ function randomAllNotes() {
   });
 
   //draw tuplets
-  if (tuplets !== []) {
+  if (tuplets.length) {
     tuplets.forEach((t) => t.setContext(context).draw());
   }
 }
